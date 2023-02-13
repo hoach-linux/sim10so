@@ -5,10 +5,10 @@ export const Card2 = () => (
     <Card.Header css={{ position: "absolute", zIndex: 1, top: 5 }}>
       <Col>
         <Text size={12} weight="bold" transform="uppercase" color="#ffffffAA">
-          Plant a tree
+          Ý nghĩa sim 4.0
         </Text>
         <Text h4 color="white">
-          Contribute to the planet
+          Không đơn giản chỉ là " những con số "
         </Text>
       </Col>
     </Card.Header>

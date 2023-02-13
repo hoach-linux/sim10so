@@ -5,10 +5,10 @@ export const Card1 = () => (
     <Card.Header css={{ position: "absolute", zIndex: 1, top: 5 }}>
       <Col>
         <Text size={12} weight="bold" transform="uppercase" color="#ffffffAA">
-          What to watch
+          Định giá sim 4.0
         </Text>
         <Text h4 color="white">
-          Stream the Acme event
+          Góc nhìn khách quan về giá trị sim
         </Text>
       </Col>
     </Card.Header>

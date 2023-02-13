@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Navbar, Button, Link, Text } from "@nextui-org/react";
+import { Navbar, Link, Text } from "@nextui-org/react";
 
 const NavbarComponent = () => {
   const collapseItems = [
@@ -25,10 +25,10 @@ const NavbarComponent = () => {
         </Text>
       </Navbar.Brand>
       <Navbar.Content enableCursorHighlight hideIn="sm" variant="default">
-        <Navbar.Link href="#">Sim số đẹp</Navbar.Link>
-        <Navbar.Link isActive href="#">
-          Thuê Sim VIP
+        <Navbar.Link href="#" isActive>
+          Sim số đẹp
         </Navbar.Link>
+        <Navbar.Link href="#">Thuê Sim VIP</Navbar.Link>
         <Navbar.Link href="#">Định giá sim 4.0</Navbar.Link>
         <Navbar.Link href="#">Cầm Sim Đẹp</Navbar.Link>
       </Navbar.Content>
