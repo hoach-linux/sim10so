@@ -1,8 +1,8 @@
 import * as React from "react";
-import { Card, Grid, Row, Text } from "@nextui-org/react";
+import { Grid, Text } from "@nextui-org/react";
 import Sim from "./Sim";
 
-const SimList = ({ sims }: { sims: any }) => {
+const SimList = ({ sims, title }: { sims: any; title: string }) => {
   interface ISim {
     number: string;
     price: number;
@@ -10,19 +10,8 @@ const SimList = ({ sims }: { sims: any }) => {
 
   return (
     <div>
-      <Card>
-        <Card.Body>
-          <Text
-            h4
-            transform="uppercase"
-            css={{ textAlign: "center", margin: 0 }}
-          >
-            {" "}
-            Bộ Sưu Tập Sim Số Đẹp Giá Rẻ{" "}
-          </Text>
-        </Card.Body>
-      </Card>
-      <Grid.Container gap={2} justify="flex-start">
+      <Text h2>{title}</Text>
+      <Grid.Container gap={2} justify="space-between">
         {sims.map((sim: ISim, index: number) => (
           <Grid xs={6} sm={3} key={index}>
             <Sim sim={sim} />

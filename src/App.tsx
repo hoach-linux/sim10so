@@ -42,7 +42,7 @@ function App() {
           }}
         >
           <Header />
-          <SimList sims={sims} />
+          <SimList sims={sims} title="Bộ sưu tập sim số đẹp giá rẻ" />
         </Container>
       </Box>
     </NextUIProvider>

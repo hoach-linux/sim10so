@@ -6,7 +6,7 @@ import { Card3 } from "./Card3";
 import { Card4 } from "./Card4";
 const Header = () => {
   return (
-    <Grid.Container gap={2} justify="center">
+    <Grid.Container gap={2} justify="center" css={{marginBottom: "62px"}}>
       <Grid xs={12} sm={4}>
         <Card1 />
       </Grid>

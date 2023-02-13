@@ -46,7 +46,7 @@ export const Card4 = () => (
                 weight="bold"
                 transform="uppercase"
               >
-                Mua Ngay
+                Xem Ngay
               </Text>
             </Button>
           </Row>
