@@ -10,7 +10,7 @@ const NavbarComponent = () => {
   ];
 
   return (
-    <Navbar isBordered variant="sticky">
+    <Navbar variant="sticky">
       <Navbar.Toggle
         aria-label="toggle navigation"
         css={{
