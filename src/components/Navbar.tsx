@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Navbar, Link, Text } from "@nextui-org/react";
+import { Navbar, Link, Text, Button } from "@nextui-org/react";
 
 const NavbarComponent = () => {
   const collapseItems = [
@@ -36,13 +36,18 @@ const NavbarComponent = () => {
         {collapseItems.map((item, index) => (
           <Navbar.CollapseItem key={item}>
             <Link
-              color="inherit"
               css={{
                 minWidth: "100%",
               }}
-              href="#"
             >
-              {item}
+              <Button
+                flat
+                css={{
+                  minWidth: "100%",
+                }}
+              >
+                {item}
+              </Button>
             </Link>
           </Navbar.CollapseItem>
         ))}
