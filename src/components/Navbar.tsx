@@ -3,15 +3,10 @@ import { Navbar, Button, Link, Text } from "@nextui-org/react";
 
 const NavbarComponent = () => {
   const collapseItems = [
-    "Features",
-    "Customers",
-    "Pricing",
-    "Company",
-    "Legal",
-    "Team",
-    "Help & Feedback",
-    "Login",
-    "Sign Up",
+    "Sim số đẹp",
+    "Thuê Sim VIP",
+    "Định giá sim 4.0",
+    "Cầm Sim Đẹp",
   ];
 
   return (
@@ -19,7 +14,7 @@ const NavbarComponent = () => {
       <Navbar.Toggle
         aria-label="toggle navigation"
         css={{
-          "@xs": {
+          "@sm": {
             display: "none",
           },
         }}
@@ -29,13 +24,13 @@ const NavbarComponent = () => {
           SIM10SO.COM
         </Text>
       </Navbar.Brand>
-      <Navbar.Content enableCursorHighlight hideIn="xs" variant="default">
-        <Navbar.Link href="#">Features</Navbar.Link>
+      <Navbar.Content enableCursorHighlight hideIn="sm" variant="default">
+        <Navbar.Link href="#">Sim số đẹp</Navbar.Link>
         <Navbar.Link isActive href="#">
-          Customers
+          Thuê Sim VIP
         </Navbar.Link>
-        <Navbar.Link href="#">Pricing</Navbar.Link>
-        <Navbar.Link href="#">Company</Navbar.Link>
+        <Navbar.Link href="#">Định giá sim 4.0</Navbar.Link>
+        <Navbar.Link href="#">Cầm Sim Đẹp</Navbar.Link>
       </Navbar.Content>
       <Navbar.Collapse>
         {collapseItems.map((item, index) => (

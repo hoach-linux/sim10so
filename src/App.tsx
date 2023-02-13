@@ -1,10 +1,9 @@
 import * as React from "react";
-import { useState } from "react";
 import { NextUIProvider } from "@nextui-org/react";
 import { createTheme } from "@nextui-org/react";
-import { Button } from "@nextui-org/react";
 import Navbar from "./components/Navbar";
 import { Box } from "./components/Box";
+import Header from "./components/Header/Header";
 
 const darkTheme = createTheme({
   type: "dark",
@@ -12,14 +11,16 @@ const darkTheme = createTheme({
 
 function App() {
   return (
-    <NextUIProvider theme={darkTheme}>
+    <NextUIProvider>
       <Box
         css={{
           maxW: "100%",
         }}
       >
         <Navbar />
-        <Button>Default</Button>
+        <div>
+          <Header />
+        </div>
       </Box>
     </NextUIProvider>
   );
