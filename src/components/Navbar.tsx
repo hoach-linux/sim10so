@@ -11,7 +11,7 @@ const NavbarComponent = () => {
   ];
 
   return (
-    <Navbar variant="sticky" isBordered>
+    <Navbar variant="sticky" isBordered isCompact>
       <Navbar.Toggle
         aria-label="toggle navigation"
         css={{
@@ -48,7 +48,7 @@ const NavbarComponent = () => {
                 minWidth: "100%",
               }}
             >
-              {item.name}
+              <Link to={item.link}>{item.name}</Link>
             </Button>
           </Navbar.CollapseItem>
         ))}
