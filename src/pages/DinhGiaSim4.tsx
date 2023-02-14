@@ -1,3 +1,5 @@
+import * as React from "react";
+
 const DinhGiaSim4 = () => {
   return (
     <div>
@@ -6,4 +8,4 @@ const DinhGiaSim4 = () => {
   );
 };
 
-export default DinhGiaSim4
+export default DinhGiaSim4;

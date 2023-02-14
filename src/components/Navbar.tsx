@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Navbar, Text, Button } from "@nextui-org/react";
+import { Navbar, Card, Text, Button } from "@nextui-org/react";
 import { Link } from "react-router-dom";
 
 const NavbarComponent = () => {
@@ -42,14 +42,32 @@ const NavbarComponent = () => {
       <Navbar.Collapse>
         {collapseItems.map((item, index) => (
           <Navbar.CollapseItem key={item.link}>
-            <Button
-              flat
-              css={{
+            <Link
+              to={item.link}
+              style={{
                 minWidth: "100%",
               }}
             >
-              <Link to={item.link}>{item.name}</Link>
-            </Button>
+              <Card
+                isPressable
+                isHoverable
+                variant="flat"
+                css={{
+                  mw: "400px",
+                  minWidth: "100%",
+                  background: "rgba(0, 114, 245, .2)",
+                }}
+              >
+                <Card.Body>
+                  <Text
+                    css={{ textAlign: "center", color: "rgb(54, 148, 255)" }}
+                  >
+                    {" "}
+                    {item.name}
+                  </Text>
+                </Card.Body>
+              </Card>
+            </Link>
           </Navbar.CollapseItem>
         ))}
       </Navbar.Collapse>

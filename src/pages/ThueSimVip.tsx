@@ -1,3 +1,5 @@
+import * as React from "react";
+
 const ThueSim = () => {
   return (
     <div>
@@ -6,4 +8,4 @@ const ThueSim = () => {
   );
 };
 
-export default ThueSim
+export default ThueSim;
