@@ -1,5 +1,7 @@
 import * as React from "react";
-import { Navbar, Link, Text, Button } from "@nextui-org/react";
+import { Navbar, Text, Button } from "@nextui-org/react";
+import { Link as NextLink } from "@nextui-org/react";
+import { Link } from "react-router-dom";
 
 const NavbarComponent = () => {
   const collapseItems = [
@@ -24,18 +26,28 @@ const NavbarComponent = () => {
           SIM10SO.COM
         </Text>
       </Navbar.Brand>
-      <Navbar.Content enableCursorHighlight hideIn="sm" variant="default">
-        <Navbar.Link href="#" isActive>
-          Sim số đẹp
+      <Navbar.Content
+        enableCursorHighlight
+        hideIn="sm"
+        variant="default"
+      >
+        <Navbar.Link isActive>
+          <Link to="/">Sim số đẹp</Link>
         </Navbar.Link>
-        <Navbar.Link href="#">Thuê Sim VIP</Navbar.Link>
-        <Navbar.Link href="#">Định giá sim 4.0</Navbar.Link>
-        <Navbar.Link href="#">Cầm Sim Đẹp</Navbar.Link>
+        <Navbar.Link>
+          <Link to="/thuesimvip">Thuê Sim VIP</Link>
+        </Navbar.Link>
+        <Navbar.Link>
+          <Link to="/dinhgiasim4">Định giá sim 4.0</Link>
+        </Navbar.Link>
+        <Navbar.Link>
+          <Link to="/camsimdep">Cầm Sim Đẹp</Link>
+        </Navbar.Link>
       </Navbar.Content>
       <Navbar.Collapse>
         {collapseItems.map((item, index) => (
           <Navbar.CollapseItem key={item}>
-            <Link
+            <NextLink
               css={{
                 minWidth: "100%",
               }}
@@ -48,7 +60,7 @@ const NavbarComponent = () => {
               >
                 {item}
               </Button>
-            </Link>
+            </NextLink>
           </Navbar.CollapseItem>
         ))}
       </Navbar.Collapse>
