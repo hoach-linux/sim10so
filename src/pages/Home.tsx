@@ -3,6 +3,7 @@ import { Container } from "@nextui-org/react";
 import Header from "../components/Header/Header";
 import SimList from "../components/SimList";
 import { useState } from "react";
+import { motion } from "framer-motion";
 
 const Home = () => {
   const [sims, setSims] = useState([
@@ -31,15 +32,17 @@ const Home = () => {
   ]);
 
   return (
-    <Container
-      css={{
-        padding: "10px",
-      }}
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.75, ease: "easeOut" }}
+      exit={{ opacity: 0 }}
+      style={{ maxWidth: "1440px", margin: "0 auto", padding: "10px" }}
     >
       <Header />
       <SimList sims={sims} title="Sim số đẹp giá rẻ" />
       <SimList sims={simsTamHoa} title="Sim Tam Hoa Giá Gốc" />
-    </Container>
+    </motion.div>
   );
 };
 
