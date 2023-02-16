@@ -1,6 +1,14 @@
 import * as React from "react";
-import { Navbar, Card, Text, Button } from "@nextui-org/react";
+import {
+  Navbar,
+  Tooltip,
+  Text,
+  Link as NextLink,
+  Button,
+} from "@nextui-org/react";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPhone } from "@fortawesome/free-solid-svg-icons";
 
 const NavbarComponent = () => {
   const collapseItems = [
@@ -38,6 +46,20 @@ const NavbarComponent = () => {
         <Navbar.Link>
           <Link to="/camsimdep">Cầm Sim Đẹp</Link>
         </Navbar.Link>
+      </Navbar.Content>
+      <Navbar.Content>
+        <Tooltip
+          content={"Tổng đài"}
+          rounded
+          color="primary"
+          placement="bottom"
+        >
+          <NextLink href="tel:+84904887766">
+            <Button flat auto size="lg">
+              <FontAwesomeIcon icon={faPhone} />
+            </Button>
+          </NextLink>
+        </Tooltip>
       </Navbar.Content>
       <Navbar.Collapse>
         {collapseItems.map((item, index) => (
