@@ -73,9 +73,13 @@ const NavbarComponent = () => {
           <Dropdown.Button flat size="lg">
             Chat
           </Dropdown.Button>
-          <Dropdown.Menu onAction={(e) => goTo(e)}>
-            <Dropdown.Item key="facebook">Facebook</Dropdown.Item>
-            <Dropdown.Item key="zalo">Zalo</Dropdown.Item>
+          <Dropdown.Menu onAction={(e) => goTo(e)} color="primary">
+            <Dropdown.Item key="facebook" description="Chat qua Facebook">
+              Facebook
+            </Dropdown.Item>
+            <Dropdown.Item key="zalo" description="Chat qua Zalo">
+              Zalo
+            </Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
       </Navbar.Content>
