@@ -22,13 +22,15 @@ const NavbarComponent = () => {
   function goTo(e: any) {
     if (e === "facebook") {
       window.open("https://www.facebook.com/messages/t/100010209732994");
-    } else {
+    } else if (e === "zalo") {
       window.open("https://zalo.me/0904887766");
+    } else {
+      window.open("tel:+84904887766");
     }
   }
 
   return (
-    <Navbar variant="sticky" isBordered>
+    <Navbar variant="floating" isBordered>
       <Navbar.Toggle
         aria-label="toggle navigation"
         css={{
@@ -56,7 +58,7 @@ const NavbarComponent = () => {
           <Link to="/camsimdep">Cầm Sim Đẹp</Link>
         </Navbar.Link>
       </Navbar.Content>
-      <Navbar.Content>
+      <Navbar.Content hideIn={"sm"}>
         <Tooltip
           content={"Tổng đài"}
           rounded
@@ -69,11 +71,16 @@ const NavbarComponent = () => {
             </Button>
           </NextLink>
         </Tooltip>
+      </Navbar.Content>
+      <Navbar.Content>
         <Dropdown>
           <Dropdown.Button flat size="lg">
             Chat
           </Dropdown.Button>
           <Dropdown.Menu onAction={(e) => goTo(e)} color="primary">
+            <Dropdown.Item key="phone" description="Gọi tổng đài">
+              <FontAwesomeIcon icon={faPhone} />
+            </Dropdown.Item>
             <Dropdown.Item key="facebook" description="Chat qua Facebook">
               Facebook
             </Dropdown.Item>
