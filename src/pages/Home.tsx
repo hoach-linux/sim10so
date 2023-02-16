@@ -6,16 +6,17 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useFetching } from "../hooks/useFetching";
 import SimService from "../API/SimService";
+import { Loading, Spacer } from "@nextui-org/react";
 
 const Home = () => {
   const [sims, setSims] = useState([]);
   const [simsTamHoa, setSimsTamHoa] = useState([]);
-  const [fetchSims] = useFetching(async () => {
+  const [fetchSims, simsLoading] = useFetching(async () => {
     const response: any = await SimService.getSim(20, 1);
 
     setSims(response.data);
   });
-  const [fetchSimsTamHoa] = useFetching(async () => {
+  const [fetchSimsTamHoa, simsTamHoaLoading] = useFetching(async () => {
     const response: any = await SimService.getSim(10, 2);
 
     setSimsTamHoa(response.data);
@@ -35,8 +36,16 @@ const Home = () => {
       style={{ maxWidth: "1440px", margin: "0 auto", padding: "10px" }}
     >
       <Header />
-      <SimList sims={sims} title="Sim số đẹp giá rẻ" />
-      <SimList sims={simsTamHoa} title="Sim Tam Hoa Giá Gốc" />
+      {simsLoading ? (
+        <Loading size="lg" />
+      ) : (
+        <SimList sims={sims} title="Sim số đẹp giá rẻ" />
+      )}
+      {simsTamHoaLoading ? (
+        <Loading size="lg" />
+      ) : (
+        <SimList sims={simsTamHoa} title="Sim Tam Hoa Giá Gốc" />
+      )}
     </motion.div>
   );
 };
