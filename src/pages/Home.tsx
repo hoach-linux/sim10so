@@ -7,7 +7,6 @@ import { motion } from "framer-motion";
 import { useFetching } from "../hooks/useFetching";
 import SimService from "../API/SimService";
 import { Loading, Spacer } from "@nextui-org/react";
-
 const Home = () => {
   const [sims, setSims] = useState([]);
   const [simsTamHoa, setSimsTamHoa] = useState([]);

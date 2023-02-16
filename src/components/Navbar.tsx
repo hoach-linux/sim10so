@@ -7,7 +7,7 @@ import {
   Dropdown,
   Button,
 } from "@nextui-org/react";
-import { Link, redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPhone } from "@fortawesome/free-solid-svg-icons";
 
