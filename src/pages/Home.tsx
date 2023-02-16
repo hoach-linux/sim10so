@@ -1,35 +1,30 @@
 import * as React from "react";
-import { Container } from "@nextui-org/react";
+import { Button, Container } from "@nextui-org/react";
 import Header from "../components/Header/Header";
 import SimList from "../components/SimList";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { useFetching } from "../hooks/useFetching";
+import SimService from "../API/SimService";
 
 const Home = () => {
-  const [sims, setSims] = useState([
-    { number: "0937.24.8688", price: 1200000 },
-    { number: "0937.24.8688", price: 1200000 },
-    { number: "0937.24.8688", price: 1200000 },
-    { number: "0937.24.8688", price: 1200000 },
-    { number: "0937.24.8688", price: 1200000 },
-    { number: "0937.24.8688", price: 1200000 },
-    { number: "0937.24.8688", price: 1200000 },
-    { number: "0937.24.8688", price: 1200000 },
-    { number: "0937.24.8688", price: 1200000 },
-    { number: "0937.24.8688", price: 1200000 },
-    { number: "0937.24.8688", price: 1200000 },
-    { number: "0937.24.8688", price: 1200000 },
-  ]);
-  const [simsTamHoa, setSimsTamHoa] = useState([
-    { number: "0935.123.666", price: 30000000 },
-    { number: "0935.123.666", price: 30000000 },
-    { number: "0935.123.666", price: 30000000 },
-    { number: "0935.123.666", price: 30000000 },
-    { number: "0935.123.666", price: 30000000 },
-    { number: "0935.123.666", price: 30000000 },
-    { number: "0935.123.666", price: 30000000 },
-    { number: "0935.123.666", price: 30000000 },
-  ]);
+  const [sims, setSims] = useState([]);
+  const [simsTamHoa, setSimsTamHoa] = useState([]);
+  const [fetchSims] = useFetching(async () => {
+    const response: any = await SimService.getSim(20, 1);
+
+    setSims(response.data);
+  });
+  const [fetchSimsTamHoa] = useFetching(async () => {
+    const response: any = await SimService.getSim(10, 2);
+
+    setSimsTamHoa(response.data);
+  });
+
+  useEffect(() => {
+    fetchSims();
+    fetchSimsTamHoa();
+  }, []);
 
   return (
     <motion.div

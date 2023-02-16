@@ -14,17 +14,16 @@ export default function Sim({ sim }: { sim: any }) {
         <Grid.Container css={{ pl: "$6" }}>
           <Grid xs={12}>
             <Text h4 css={{ lineHeight: "$xs" }}>
-              Mobifone
+              {sim.provider}
             </Text>
-          </Grid>
-          <Grid xs={12}>
-            <Text css={{ color: "$accents8" }}>mobifone.vn</Text>
           </Grid>
         </Grid.Container>
       </Card.Header>
       <Card.Body css={{ py: "$2" }}>
         <Text>{sim.number}</Text>
-        <Text>{Number(sim.price).toLocaleString("vn")}₫</Text>
+        <Text>
+          {Number(sim.price.split(",").join("")).toLocaleString("vn")}₫
+        </Text>
       </Card.Body>
     </Card>
   );

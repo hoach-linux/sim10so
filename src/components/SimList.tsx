@@ -5,7 +5,8 @@ import Sim from "./Sim";
 const SimList = ({ sims, title }: { sims: any; title: string }) => {
   interface ISim {
     number: string;
-    price: number;
+    price: string;
+    provider: string;
   }
 
   return (
@@ -13,7 +14,7 @@ const SimList = ({ sims, title }: { sims: any; title: string }) => {
       <Text h2>{title}</Text>
       <Grid.Container
         gap={2}
-        justify="space-between"
+        justify="flex-start"
         css={{ marginBottom: "62px" }}
       >
         {sims.map((sim: ISim, index: number) => (

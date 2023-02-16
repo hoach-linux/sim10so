@@ -11,7 +11,7 @@ const NavbarComponent = () => {
   ];
 
   return (
-    <Navbar variant="sticky" isBordered isCompact>
+    <Navbar variant="sticky" isBordered>
       <Navbar.Toggle
         aria-label="toggle navigation"
         css={{
@@ -41,32 +41,14 @@ const NavbarComponent = () => {
       </Navbar.Content>
       <Navbar.Collapse>
         {collapseItems.map((item, index) => (
-          <Navbar.CollapseItem key={item.link}>
+          <Navbar.CollapseItem key={item.link} css={{ padding: "0" }}>
             <Link
               to={item.link}
               style={{
                 minWidth: "100%",
               }}
             >
-              <Card
-                isPressable
-                isHoverable
-                variant="flat"
-                css={{
-                  mw: "400px",
-                  minWidth: "100%",
-                  background: "rgba(0, 114, 245, .2)",
-                }}
-              >
-                <Card.Body>
-                  <Text
-                    css={{ textAlign: "center", color: "rgb(54, 148, 255)" }}
-                  >
-                    {" "}
-                    {item.name}
-                  </Text>
-                </Card.Body>
-              </Card>
+              <Text h3>{item.name}</Text>
             </Link>
           </Navbar.CollapseItem>
         ))}
