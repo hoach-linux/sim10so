@@ -4,9 +4,10 @@ import {
   Tooltip,
   Text,
   Link as NextLink,
+  Dropdown,
   Button,
 } from "@nextui-org/react";
-import { Link } from "react-router-dom";
+import { Link, redirect } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPhone } from "@fortawesome/free-solid-svg-icons";
 
@@ -17,6 +18,14 @@ const NavbarComponent = () => {
     { name: "Định giá sim 4.0", link: "/dinhgiasim4" },
     { name: "Cầm Sim Đẹp", link: "/camsimdep" },
   ];
+
+  function goTo(e: any) {
+    if (e === "facebook") {
+      window.open("https://www.facebook.com/messages/t/100010209732994");
+    } else {
+      window.open("https://zalo.me/0904887766");
+    }
+  }
 
   return (
     <Navbar variant="sticky" isBordered>
@@ -60,6 +69,15 @@ const NavbarComponent = () => {
             </Button>
           </NextLink>
         </Tooltip>
+        <Dropdown>
+          <Dropdown.Button flat size="lg">
+            Chat
+          </Dropdown.Button>
+          <Dropdown.Menu onAction={(e) => goTo(e)}>
+            <Dropdown.Item key="facebook">Facebook</Dropdown.Item>
+            <Dropdown.Item key="zalo">Zalo</Dropdown.Item>
+          </Dropdown.Menu>
+        </Dropdown>
       </Navbar.Content>
       <Navbar.Collapse>
         {collapseItems.map((item, index) => (
