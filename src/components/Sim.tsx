@@ -77,7 +77,7 @@ export default function Sim({ sim }: { sim: any }) {
       <Modal
         closeButton
         blur
-        aria-labelledby="modal-title"
+        aria-label="modal-title"
         open={visible}
         onClose={closeModal}
       >
