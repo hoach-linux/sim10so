@@ -13,7 +13,7 @@ import { faPhone } from "@fortawesome/free-solid-svg-icons";
 
 const NavbarComponent = () => {
   const collapseItems = [
-    { name: "Sim số đẹp", link: "/" },
+    { name: "Trang chủ", link: "/" },
     { name: "Thuê Sim VIP", link: "/thuesimvip" },
     { name: "Định giá sim 4.0", link: "https://dinhgiasim.com.vn/" },
     {
@@ -49,7 +49,7 @@ const NavbarComponent = () => {
       </Navbar.Brand>
       <Navbar.Content enableCursorHighlight hideIn="sm" variant="default">
         <Navbar.Link isActive>
-          <Link to="/">Sim số đẹp</Link>
+          <Link to="/">Trang chủ</Link>
         </Navbar.Link>
         <Navbar.Link>
           <Link to="/thuesimvip">Thuê Sim VIP</Link>
