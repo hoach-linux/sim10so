@@ -1,4 +1,5 @@
 import { Card, Col, Row, Button, Text } from "@nextui-org/react";
+import { Link } from "react-router-dom";
 
 export const Card4 = () => (
   <Card css={{ w: "100%", h: "400px" }}>
@@ -34,21 +35,23 @@ export const Card4 = () => (
       <Row>
         <Col>
           <Row justify="flex-end">
-            <Button
-              flat
-              auto
-              rounded
-              css={{ color: "#94f9f0", bg: "#94f9f026" }}
-            >
-              <Text
-                css={{ color: "inherit" }}
-                size={12}
-                weight="bold"
-                transform="uppercase"
+            <Link to="/thuesimvip">
+              <Button
+                flat
+                auto
+                rounded
+                css={{ color: "#94f9f0", bg: "#94f9f026" }}
               >
-                Xem Ngay
-              </Text>
-            </Button>
+                <Text
+                  css={{ color: "inherit" }}
+                  size={12}
+                  weight="bold"
+                  transform="uppercase"
+                >
+                  Xem Ngay
+                </Text>
+              </Button>
+            </Link>
           </Row>
         </Col>
       </Row>

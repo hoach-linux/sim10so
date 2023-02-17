@@ -15,8 +15,11 @@ const NavbarComponent = () => {
   const collapseItems = [
     { name: "Sim số đẹp", link: "/" },
     { name: "Thuê Sim VIP", link: "/thuesimvip" },
-    { name: "Định giá sim 4.0", link: "/dinhgiasim4" },
-    { name: "Cầm Sim Đẹp", link: "/camsimdep" },
+    { name: "Định giá sim 4.0", link: "https://dinhgiasim.com.vn/" },
+    {
+      name: "Phong Thủy",
+      link: "https://xemvanmenh.net/xem-boi-so-dien-thoai.html",
+    },
   ];
 
   function goTo(e: any) {
@@ -51,11 +54,11 @@ const NavbarComponent = () => {
         <Navbar.Link>
           <Link to="/thuesimvip">Thuê Sim VIP</Link>
         </Navbar.Link>
-        <Navbar.Link>
-          <Link to="/dinhgiasim4">Định giá sim 4.0</Link>
+        <Navbar.Link href="https://dinhgiasim.com.vn/">
+          Định giá sim 4.0
         </Navbar.Link>
-        <Navbar.Link>
-          <Link to="/camsimdep">Cầm Sim Đẹp</Link>
+        <Navbar.Link href="https://xemvanmenh.net/xem-boi-so-dien-thoai.html">
+          Phong Thủy
         </Navbar.Link>
       </Navbar.Content>
       <Navbar.Content hideIn={"sm"}>
