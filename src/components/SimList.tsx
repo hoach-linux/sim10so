@@ -11,22 +11,18 @@ const SimList = ({ sims, title }: { sims: any; title: string }) => {
 
   return (
     <div>
-      {sims.length && (
-        <div>
-          <Text h2>{title}</Text>
-          <Grid.Container
-            gap={2}
-            justify="flex-start"
-            css={{ marginBottom: "62px" }}
-          >
-            {sims.map((sim: ISim, index: number) => (
-              <Grid xs={6} sm={3} key={index}>
-                <Sim sim={sim} />
-              </Grid>
-            ))}
-          </Grid.Container>
-        </div>
-      )}
+      <Text h2>{title}</Text>
+      <Grid.Container
+        gap={2}
+        justify="flex-start"
+        css={{ marginBottom: "62px" }}
+      >
+        {sims.map((sim: ISim, index: number) => (
+          <Grid xs={6} sm={3} key={index}>
+            <Sim sim={sim} />
+          </Grid>
+        ))}
+      </Grid.Container>
     </div>
   );
 };

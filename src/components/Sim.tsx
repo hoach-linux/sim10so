@@ -42,7 +42,7 @@ export default function Sim({ sim }: { sim: any }) {
       isPressable
       css={{ p: "$6", mw: "400px" }}
       variant="flat"
-      onPress={openModal}
+      onClick={openModal}
     >
       <Card.Header>
         {provider === "viettel" ? (
@@ -158,11 +158,11 @@ export default function Sim({ sim }: { sim: any }) {
             auto
             flat
             color="error"
-            onPress={closeModal}
+            onClick={closeModal}
           >
             Đóng
           </Button>
-          <Button aria-label="Order" auto onPress={order}>
+          <Button aria-label="Order" auto onClick={order}>
             Mua
           </Button>
         </Modal.Footer>

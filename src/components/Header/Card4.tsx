@@ -35,13 +35,13 @@ export const Card4 = () => (
       <Row>
         <Col>
           <Row justify="flex-end">
-            <Link to="/thuesimvip">
-              <Button
-                flat
-                auto
-                rounded
-                css={{ color: "#94f9f0", bg: "#94f9f026" }}
-              >
+            <Button
+              flat
+              auto
+              rounded
+              css={{ color: "#94f9f0", bg: "#94f9f026" }}
+            >
+              <Link to="/thuesimvip">
                 <Text
                   css={{ color: "inherit" }}
                   size={12}
@@ -50,8 +50,8 @@ export const Card4 = () => (
                 >
                   Xem Ngay
                 </Text>
-              </Button>
-            </Link>
+              </Link>
+            </Button>
           </Row>
         </Col>
       </Row>
