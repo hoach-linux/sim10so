@@ -76,8 +76,7 @@ export default function Sim({ sim }: { sim: any }) {
       </Card.Body>
       <Modal
         closeButton
-        blur
-        aria-label="modal-title"
+        aria-labelledby="modal-title"
         open={visible}
         onClose={closeModal}
       >
@@ -154,10 +153,16 @@ export default function Sim({ sim }: { sim: any }) {
           )}
         </Modal.Body>
         <Modal.Footer>
-          <Button auto flat color="error" onPress={closeModal}>
+          <Button
+            aria-label="Close"
+            auto
+            flat
+            color="error"
+            onPress={closeModal}
+          >
             Đóng
           </Button>
-          <Button auto onPress={order}>
+          <Button aria-label="Order" auto onPress={order}>
             Mua
           </Button>
         </Modal.Footer>
