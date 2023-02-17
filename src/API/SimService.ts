@@ -25,4 +25,10 @@ export default class SimService {
     );
     return sim.data;
   }
+  static async getSimBySearch(keyword: string) {
+    const sim = await axios.get(
+      `https://directus.hoach.skryonline.com/items/sim_list?search=${keyword}`
+    );
+    return sim.data;
+  }
 }
