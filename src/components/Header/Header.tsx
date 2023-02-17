@@ -15,7 +15,7 @@ const Header = () => {
   const [searchInput, setSearchInput] = useState("");
   const [searchTitle, setSearchTitle] = useState("");
   const [searching, searchLoading] = useFetching(async () => {
-    const response = await SimService.getSimBySearch(searchInput);
+    const response = await SimService.getSimBySearch({ keyword: searchInput });
 
     setSearchSim(response.data);
     setSearchTitle(`Tìm sim số đẹp: ${searchInput}`);
