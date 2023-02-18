@@ -1,15 +1,20 @@
 import * as React from "react";
 import {
+  Switch,
   Navbar,
   Tooltip,
   Text,
   Link as NextLink,
   Dropdown,
   Button,
+  changeTheme,
+  useTheme,
 } from "@nextui-org/react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPhone } from "@fortawesome/free-solid-svg-icons";
+import { SunIcon } from "./icons/SunIcon";
+import { MoonIcon } from "./icons/MoonIcon";
 
 const NavbarComponent = () => {
   const collapseItems = [
@@ -21,6 +26,13 @@ const NavbarComponent = () => {
       link: "https://xemvanmenh.net/xem-boi-so-dien-thoai.html",
     },
   ];
+  const { isDark } = useTheme();
+
+  const changeMainTheme = () => {
+    const nextTheme = isDark ? "light" : "dark";
+    window.localStorage.setItem("data-theme", nextTheme); // you can use any storage
+    changeTheme(nextTheme);
+  };
 
   function goTo(e: any) {
     if (e === "facebook") {
@@ -76,6 +88,14 @@ const NavbarComponent = () => {
         </Tooltip>
       </Navbar.Content>
       <Navbar.Content>
+        <Switch
+          checked={isDark}
+          size="xl"
+          iconOn={<MoonIcon filled />}
+          iconOff={<SunIcon filled />}
+          css={{ padding: "0" }}
+          onChange={changeMainTheme}
+        />
         <Dropdown>
           <Dropdown.Button flat size="lg">
             Chat
