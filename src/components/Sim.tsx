@@ -2,6 +2,8 @@ import * as React from "react";
 import { useState, useEffect } from "react";
 import { Card, Grid, Text } from "@nextui-org/react";
 import { Modal, Input, Row, Checkbox, Button } from "@nextui-org/react";
+import { faHouse, faUser, faPhone } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default function Sim({ sim }: { sim: any }) {
   const [provider, setProvider] = useState(sim.provider.toLowerCase().trim());
@@ -101,6 +103,7 @@ export default function Sim({ sim }: { sim: any }) {
             minLength={1}
             value={userData.name}
             onChange={(e) => setUserData({ ...userData, name: e.target.value })}
+            contentLeft={<FontAwesomeIcon icon={faUser} />}
           />
           <Input
             clearable
@@ -115,6 +118,7 @@ export default function Sim({ sim }: { sim: any }) {
             onChange={(e) =>
               setUserData({ ...userData, address: e.target.value })
             }
+            contentLeft={<FontAwesomeIcon icon={faHouse} />}
           />
           <Input
             clearable
@@ -129,6 +133,7 @@ export default function Sim({ sim }: { sim: any }) {
             onChange={(e) =>
               setUserData({ ...userData, numberPhone: e.target.value })
             }
+            contentLeft={<FontAwesomeIcon icon={faPhone} />}
           />
           {showRequired && (
             <Row css={{ display: "flex", justifyContent: "space-between" }}>
