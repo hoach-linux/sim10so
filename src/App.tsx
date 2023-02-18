@@ -13,7 +13,7 @@ const darkTheme = createTheme({
 
 function App() {
   return (
-    <NextUIProvider theme={darkTheme}>
+    <NextUIProvider>
       <Box
         css={{
           maxW: "100%",

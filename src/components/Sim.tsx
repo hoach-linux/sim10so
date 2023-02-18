@@ -75,6 +75,7 @@ export default function Sim({ sim }: { sim: any }) {
         </Text>
       </Card.Body>
       <Modal
+        blur
         closeButton
         aria-labelledby="modal-title"
         open={visible}
