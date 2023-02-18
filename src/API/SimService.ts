@@ -50,4 +50,10 @@ export default class SimService {
     }
     return sim.data;
   }
+  static async postSimOrder(simOrder: object) {
+    await axios.post(
+      "https://directus.hoach.skryonline.com/items/sim_order",
+      simOrder
+    );
+  }
 }

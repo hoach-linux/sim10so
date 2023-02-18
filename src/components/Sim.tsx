@@ -4,6 +4,9 @@ import { Card, Grid, Text } from "@nextui-org/react";
 import { Modal, Input, Row, Checkbox, Button } from "@nextui-org/react";
 import { faHouse, faUser, faPhone } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import axios from "axios";
+import { useFetching } from "../hooks/useFetching";
+import SimService from "../API/SimService";
 
 export default function Sim({ sim }: { sim: any }) {
   const [provider, setProvider] = useState(sim.provider.toLowerCase().trim());
@@ -12,23 +15,25 @@ export default function Sim({ sim }: { sim: any }) {
     viettel: "4bb048f8-5047-44bb-9b3a-c80cb6130e8e",
   };
   const [visible, setVisible] = useState(false);
-  const [userData, setUserData] = useState({
+  const [orderData, setOrderData] = useState({
     name: "",
     address: "",
     numberPhone: "",
-    data: sim,
+    sim: sim,
   });
-  const openModal = () => setVisible(true);
-  const closeModal = () => setVisible(false);
   const [showRequired, setShowRequired] = useState(false);
+  const [orderingSim, orderLoading] = useFetching(async () => {
+    await SimService.postSimOrder(orderData);
+  });
+  const openModal = () => setVisible(!visible);
+  const closeModal = () => setVisible(false);
   const requiredConditions =
-    userData.name.length >= 1 &&
-    userData.address.length >= 1 &&
-    userData.numberPhone.length >= 1;
-  const order = () => {
+    orderData.name.length >= 1 &&
+    orderData.address.length >= 1 &&
+    orderData.numberPhone.length >= 1;
+  const order = async () => {
     if (requiredConditions) {
-      console.log(userData);
-
+      await orderingSim();
       closeModal();
     } else {
       setShowRequired(true);
@@ -38,7 +43,7 @@ export default function Sim({ sim }: { sim: any }) {
     if (requiredConditions) {
       setShowRequired(false);
     }
-  }, [userData]);
+  }, [orderData]);
   return (
     <Card
       isPressable
@@ -100,8 +105,10 @@ export default function Sim({ sim }: { sim: any }) {
             placeholder="Họ tên"
             required
             minLength={1}
-            value={userData.name}
-            onChange={(e) => setUserData({ ...userData, name: e.target.value })}
+            value={orderData.name}
+            onChange={(e) =>
+              setOrderData({ ...orderData, name: e.target.value })
+            }
             contentLeft={<FontAwesomeIcon icon={faUser} />}
           />
           <Input
@@ -113,9 +120,9 @@ export default function Sim({ sim }: { sim: any }) {
             placeholder="Địa chỉ"
             required
             minLength={1}
-            value={userData.address}
+            value={orderData.address}
             onChange={(e) =>
-              setUserData({ ...userData, address: e.target.value })
+              setOrderData({ ...orderData, address: e.target.value })
             }
             contentLeft={<FontAwesomeIcon icon={faHouse} />}
           />
@@ -128,9 +135,10 @@ export default function Sim({ sim }: { sim: any }) {
             placeholder="Điện thoại"
             required
             minLength={1}
-            value={userData.numberPhone}
+            value={orderData.numberPhone}
+            type="number"
             onChange={(e) =>
-              setUserData({ ...userData, numberPhone: e.target.value })
+              setOrderData({ ...orderData, numberPhone: e.target.value })
             }
             contentLeft={<FontAwesomeIcon icon={faPhone} />}
           />
@@ -138,17 +146,17 @@ export default function Sim({ sim }: { sim: any }) {
             <Row css={{ display: "flex", justifyContent: "space-between" }}>
               <Text>Bạn quên viết:</Text>
               <div style={{ display: "flex", gap: "10px" }}>
-                {userData.name.length < 1 && (
+                {orderData.name.length < 1 && (
                   <Text color="error" size={14}>
                     Họ tên*
                   </Text>
                 )}
-                {userData.address.length < 1 && (
+                {orderData.address.length < 1 && (
                   <Text color="error" size={14}>
                     Địa chỉ*
                   </Text>
                 )}
-                {userData.numberPhone.length < 1 && (
+                {orderData.numberPhone.length < 1 && (
                   <Text color="error" size={14}>
                     Điện thoại*
                   </Text>

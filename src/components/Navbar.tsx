@@ -45,7 +45,7 @@ const NavbarComponent = () => {
   }
 
   return (
-    <Navbar variant="floating" isBordered>
+    <Navbar variant="sticky" isBordered>
       <Navbar.Toggle
         aria-label="toggle navigation"
         css={{
