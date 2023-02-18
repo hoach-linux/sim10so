@@ -36,7 +36,7 @@ const NavbarComponent = () => {
 
   function goTo(e: any) {
     if (e === "facebook") {
-      window.open("https://www.facebook.com/messages/t/100010209732994");
+      window.open("https://www.facebook.com/simsodepmobifone.vms");
     } else if (e === "zalo") {
       window.open("https://zalo.me/0904887766");
     } else {
