@@ -3,9 +3,9 @@ import { Card, Text, Button, Row, Collapse } from "@nextui-org/react";
 
 export default function Order({ order }: { order: any }) {
   const sim = JSON.parse(order.sim);
-  console.log(sim);
+
   return (
-    <Card css={{ mw: "330px" }}>
+    <Card variant="bordered" isHoverable>
       <Card.Header>
         <Text b>{order.name}</Text>
       </Card.Header>

@@ -18,7 +18,7 @@ const OrderList = ({ orders }: { orders: any }) => {
         css={{ marginBottom: "62px" }}
       >
         {orders.map((order: IOrder, index: number) => (
-          <Grid xs={6} sm={3} key={index}>
+          <Grid key={index} xs={12} sm={4} md={3}>
             <Order order={order} />
           </Grid>
         ))}
