@@ -4,6 +4,8 @@ import { createBrowserRouter } from "react-router-dom";
 import Home from "../pages/Home";
 import ErrorPage from "../pages/ErrorPage";
 import App from "../App";
+import Admin from "../pages/admin/Admin";
+import AdminOrder from "../pages/admin/AdminOrder";
 
 export const routes = createBrowserRouter([
   {
@@ -15,5 +17,11 @@ export const routes = createBrowserRouter([
       { path: "thuesimvip", element: <ThueSimVip /> },
       { path: "dinhgiasim4", element: <DinhGiaSim4 /> },
     ],
+  },
+  {
+    path: "/admin",
+    element: <Admin />,
+    errorElement: <ErrorPage />,
+    children: [{ path: "order", element: <AdminOrder /> }],
   },
 ]);

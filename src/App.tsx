@@ -1,12 +1,12 @@
 import * as React from "react";
 import { NextUIProvider } from "@nextui-org/react";
+import "./style/main.css";
 import { getDocumentTheme } from "@nextui-org/react";
 import { useEffect, useState } from "react";
 import { createTheme } from "@nextui-org/react";
 import Navbar from "./components/Navbar";
 import { Box } from "./components/Box";
 import { Outlet } from "react-router-dom";
-import "./style/main.css";
 
 const darkTheme = createTheme({
   type: "dark",

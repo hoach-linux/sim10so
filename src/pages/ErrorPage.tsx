@@ -1,20 +1,15 @@
-import * as React from "react";
-import { Text } from "@nextui-org/react";
-import { motion } from "framer-motion";
+import { useRouteError } from "react-router-dom";
 
-const ErrorPage = () => {
+export default function ErrorPage() {
+  const error: any = useRouteError();
+
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.75, ease: "easeOut" }}
-      exit={{ opacity: 0 }}
-    >
-      <Text css={{ textAlign: "center" }} h1>
-        Error
-      </Text>
-    </motion.div>
+    <div id="error-page">
+      <h1>Oops!</h1>
+      <p>Sorry, an unexpected error has occurred.</p>
+      <p>
+        <i>{error.statusText || error.message}</i>
+      </p>
+    </div>
   );
-};
-
-export default ErrorPage;
+}
