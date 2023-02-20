@@ -2,7 +2,13 @@ import * as React from "react";
 import { Grid, Text } from "@nextui-org/react";
 import Order from "./Order";
 
-const OrderList = ({ orders }: { orders: any }) => {
+const OrderList = ({
+  orders,
+  reFetchOrders,
+}: {
+  orders: any;
+  reFetchOrders: any;
+}) => {
   interface IOrder {
     number: string;
     address: string;
@@ -19,7 +25,7 @@ const OrderList = ({ orders }: { orders: any }) => {
       >
         {orders.map((order: IOrder, index: number) => (
           <Grid key={index} xs={12} sm={4} md={3}>
-            <Order order={order} />
+            <Order order={order} reFetchOrders={reFetchOrders} />
           </Grid>
         ))}
       </Grid.Container>

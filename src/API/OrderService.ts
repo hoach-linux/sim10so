@@ -13,4 +13,9 @@ export default class OrderService {
     );
     return order.data;
   }
+  static async deleteOrder(id: number) {
+    await axios.delete(
+      `https://directus.hoach.skryonline.com/items/sim_order/${id}`
+    );
+  }
 }

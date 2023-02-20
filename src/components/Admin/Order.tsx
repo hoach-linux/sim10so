@@ -8,17 +8,37 @@ import {
   Modal,
   Input,
   Checkbox,
+  Loading,
 } from "@nextui-org/react";
 import { useState } from "react";
+import { useFetching } from "../../hooks/useFetching";
+import OrderService from "../../API/OrderService";
 
-export default function Order({ order }: { order: any }) {
+export default function Order({
+  order,
+  reFetchOrders,
+}: {
+  order: any;
+  reFetchOrders: any;
+}) {
   const sim = JSON.parse(order.sim);
   const [visible, setVisible] = useState(false);
+  const [disable, setDisable] = useState(false);
+
   const openModal = () => setVisible(!visible);
   const closeModal = () => setVisible(false);
+  const [deleteOrder, deleteOrderLoading] = useFetching(async () => {
+    setDisable(true);
+
+    await OrderService.deleteOrder(order.id);
+    await reFetchOrders();
+
+    closeModal();
+    setDisable(false);
+  });
 
   return (
-    <Card variant="bordered" isHoverable>
+    <Card variant="bordered">
       <Card.Header>
         <Text b>{order.name}</Text>
       </Card.Header>
@@ -84,8 +104,18 @@ export default function Order({ order }: { order: any }) {
           <Button auto flat onClick={closeModal}>
             Không
           </Button>
-          <Button auto flat color="error" onClick={closeModal}>
-            Xóa
+          <Button
+            disabled={disable}
+            auto
+            flat
+            color="error"
+            onClick={deleteOrder}
+          >
+            {deleteOrderLoading ? (
+              <Loading size="sm" color="currentColor" />
+            ) : (
+              <p>Xóa</p>
+            )}
           </Button>
         </Modal.Footer>
       </Modal>
