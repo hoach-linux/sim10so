@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useState, useEffect } from "react";
 import { Card, Grid, Text } from "@nextui-org/react";
-import { Modal, Input, Row, Checkbox, Button } from "@nextui-org/react";
+import { Modal, Input, Row, Loading, Button } from "@nextui-org/react";
 import { faHouse, faUser, faPhone } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
@@ -15,11 +15,13 @@ export default function Sim({ sim }: { sim: any }) {
     viettel: "4bb048f8-5047-44bb-9b3a-c80cb6130e8e",
   };
   const [visible, setVisible] = useState(false);
+  const [disable, setDisable] = useState(false);
   const [orderData, setOrderData] = useState({
     name: "",
     address: "",
     numberPhone: "",
     sim: sim,
+    status: "active"
   });
   const [showRequired, setShowRequired] = useState(false);
   const [orderingSim, orderLoading] = useFetching(async () => {
@@ -33,8 +35,12 @@ export default function Sim({ sim }: { sim: any }) {
     orderData.numberPhone.length >= 1;
   const order = async () => {
     if (requiredConditions) {
+      setDisable(true);
+
       await orderingSim();
+
       closeModal();
+      setDisable(false);
     } else {
       setShowRequired(true);
     }
@@ -175,8 +181,12 @@ export default function Sim({ sim }: { sim: any }) {
           >
             Đóng
           </Button>
-          <Button aria-label="Order" auto onClick={order}>
-            Mua
+          <Button aria-label="Order" disabled={disable} auto onClick={order}>
+            {orderLoading ? (
+              <Loading size="sm" color="currentColor" />
+            ) : (
+              <p>Mua</p>
+            )}
           </Button>
         </Modal.Footer>
       </Modal>

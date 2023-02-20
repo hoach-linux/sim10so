@@ -36,6 +36,10 @@ export default function Order({
     closeModal();
     setDisable(false);
   });
+  const [finishOrder, finishOrderLoading] = useFetching(async () => {
+    await OrderService.patchOrder(order.id, "archived");
+    await reFetchOrders();
+  });
 
   return (
     <Card variant="bordered">
@@ -84,7 +88,11 @@ export default function Order({
           >
             Xóa
           </Button>
-          <Button size="sm" css={{ flex: "1", margin: "2px" }}>
+          <Button
+            size="sm"
+            css={{ flex: "1", margin: "2px" }}
+            onClick={finishOrder}
+          >
             Hoàn thành
           </Button>
         </Row>
