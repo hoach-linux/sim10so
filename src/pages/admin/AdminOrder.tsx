@@ -1,15 +1,12 @@
 import * as React from "react";
-import { useState, useEffect } from "react";
 import OrderList from "../../components/Admin/OrderList";
-import { useFetching } from "../../hooks/useFetching";
-import OrderService from "../../API/OrderService";
 import { Loading, Spacer, Text } from "@nextui-org/react";
-import supabase from "../../supabase";
 import { useRealtime } from "react-supabase";
 
 const AdminOrder = () => {
   const [result, reexecute] = useRealtime("orders");
-  const { data: orders, error, fetching } = result;
+  let { data: orders, error, fetching } = result;
+  orders = orders?.filter((order) => order.status === "active");
 
   if (fetching)
     return (

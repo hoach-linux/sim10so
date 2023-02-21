@@ -6,13 +6,10 @@ import {
   Row,
   Collapse,
   Modal,
-  Input,
-  Checkbox,
   Loading,
 } from "@nextui-org/react";
 import { useState } from "react";
 import { useFetching } from "../../hooks/useFetching";
-import OrderService from "../../API/OrderService";
 import supabase from "../../supabase";
 
 export default function Order({ order }: { order: any }) {
@@ -31,7 +28,10 @@ export default function Order({ order }: { order: any }) {
     setDisable(false);
   });
   const [finishOrder, finishOrderLoading] = useFetching(async () => {
-    await OrderService.patchOrder(order.id, "archived");
+    const { data, error } = await supabase
+      .from("orders")
+      .update({ status: "archived" })
+      .eq("id", order.id);
   });
 
   return (
@@ -86,7 +86,11 @@ export default function Order({ order }: { order: any }) {
             css={{ flex: "1", margin: "2px" }}
             onClick={finishOrder}
           >
-            Hoàn thành
+            {finishOrderLoading ? (
+              <Loading size="sm" color="currentColor" />
+            ) : (
+              <p>Hoàn thành</p>
+            )}
           </Button>
         </Row>
       </Card.Footer>
