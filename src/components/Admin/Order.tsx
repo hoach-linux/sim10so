@@ -73,19 +73,15 @@ export default function Order({ order }: { order: any }) {
       <Card.Footer>
         <Row justify="space-between">
           <Button
-            size="sm"
             color="error"
+            auto
             flat
             css={{ flex: "1", margin: "2px" }}
             onClick={openModal}
           >
             Xóa
           </Button>
-          <Button
-            size="sm"
-            css={{ flex: "1", margin: "2px" }}
-            onClick={finishOrder}
-          >
+          <Button auto css={{ flex: "1", margin: "2px" }} onClick={finishOrder}>
             {finishOrderLoading ? (
               <Loading size="sm" color="currentColor" />
             ) : (
