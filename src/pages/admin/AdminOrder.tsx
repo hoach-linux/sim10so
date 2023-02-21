@@ -4,35 +4,31 @@ import OrderList from "../../components/Admin/OrderList";
 import { useFetching } from "../../hooks/useFetching";
 import OrderService from "../../API/OrderService";
 import { Loading, Spacer, Text } from "@nextui-org/react";
+import supabase from "../../supabase";
+import { useRealtime } from "react-supabase";
 
 const AdminOrder = () => {
-  let timerForRefetch = 5000;
-  const [orders, setOrders] = useState([]);
-  const [fetchOrders, ordersLoading] = useFetching(async () => {
-    const response: any = await OrderService.getOrder(20, 1);
+  const [result, reexecute] = useRealtime("orders");
+  const { data: orders, error, fetching } = result;
 
-    setOrders(response.data);
-  });
+  if (fetching)
+    return (
+      <div style={{ display: "flex", justifyContent: "center" }}>
+        <Spacer />
+        <Loading size="lg" />
+      </div>
+    );
+  if (!orders || !orders.length)
+    return (
+      <Text h1 css={{ textAlign: "center" }}>
+        Bạn không có đơn đặt hàng bây giờ
+      </Text>
+    );
+  if (error) return <Text>{error.message}</Text>;
 
-  useEffect(() => {
-    fetchOrders();
-  }, []);
-
-  const reFetchOrders = () => fetchOrders();
   return (
     <div>
-      {!ordersLoading && orders.length >= 1 ? (
-        <OrderList orders={orders} reFetchOrders={reFetchOrders} />
-      ) : ordersLoading ? (
-        <div style={{ display: "flex", justifyContent: "center" }}>
-          <Spacer />
-          <Loading size="lg" />
-        </div>
-      ) : (
-        <Text h1 css={{ textAlign: "center" }}>
-          Bạn không có đơn đặt hàng bây giờ
-        </Text>
-      )}
+      <OrderList orders={orders} />
     </div>
   );
 };

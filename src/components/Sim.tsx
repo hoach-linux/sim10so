@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
 import { useFetching } from "../hooks/useFetching";
 import SimService from "../API/SimService";
+import supabase from "../supabase";
 
 export default function Sim({ sim }: { sim: any }) {
   const [provider, setProvider] = useState(sim.provider.toLowerCase().trim());
@@ -21,11 +22,11 @@ export default function Sim({ sim }: { sim: any }) {
     address: "",
     numberPhone: "",
     sim: sim,
-    status: "active"
+    status: "active",
   });
   const [showRequired, setShowRequired] = useState(false);
   const [orderingSim, orderLoading] = useFetching(async () => {
-    await SimService.postSimOrder(orderData);
+    const { data, error } = await supabase.from("orders").insert([orderData]);
   });
   const openModal = () => setVisible(!visible);
   const closeModal = () => setVisible(false);

@@ -13,15 +13,10 @@ import {
 import { useState } from "react";
 import { useFetching } from "../../hooks/useFetching";
 import OrderService from "../../API/OrderService";
+import supabase from "../../supabase";
 
-export default function Order({
-  order,
-  reFetchOrders,
-}: {
-  order: any;
-  reFetchOrders: any;
-}) {
-  const sim = JSON.parse(order.sim);
+export default function Order({ order }: { order: any }) {
+  const sim = order.sim;
   const [visible, setVisible] = useState(false);
   const [disable, setDisable] = useState(false);
 
@@ -30,15 +25,13 @@ export default function Order({
   const [deleteOrder, deleteOrderLoading] = useFetching(async () => {
     setDisable(true);
 
-    await OrderService.deleteOrder(order.id);
-    await reFetchOrders();
+    await supabase.from("orders").delete().eq("id", order.id);
 
     closeModal();
     setDisable(false);
   });
   const [finishOrder, finishOrderLoading] = useFetching(async () => {
     await OrderService.patchOrder(order.id, "archived");
-    await reFetchOrders();
   });
 
   return (
