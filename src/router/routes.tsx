@@ -6,6 +6,7 @@ import ErrorPage from "../pages/ErrorPage";
 import App from "../App";
 import Admin from "../pages/admin/Admin";
 import AdminOrder from "../pages/admin/AdminOrder";
+import Login from "../pages/admin/Login";
 
 export const routes = createBrowserRouter([
   {
@@ -22,6 +23,9 @@ export const routes = createBrowserRouter([
     path: "/admin",
     element: <Admin />,
     errorElement: <ErrorPage />,
-    children: [{ path: "order", element: <AdminOrder /> }],
+    children: [
+      { path: "order", element: <AdminOrder /> },
+      { path: "login", element: <Login /> },
+    ],
   },
 ]);

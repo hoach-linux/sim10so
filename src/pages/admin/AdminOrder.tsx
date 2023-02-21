@@ -10,21 +10,23 @@ const AdminOrder = () => {
 
   if (fetching)
     return (
-      <div style={{ display: "flex", justifyContent: "center" }}>
+      <div
+        style={{ display: "flex", justifyContent: "center", padding: "10px 0" }}
+      >
         <Spacer />
         <Loading size="lg" />
       </div>
     );
   if (!orders || !orders.length)
     return (
-      <Text h1 css={{ textAlign: "center" }}>
+      <Text h1 css={{ textAlign: "center", padding: "10px 0" }}>
         Bạn không có đơn đặt hàng bây giờ
       </Text>
     );
   if (error) return <Text>{error.message}</Text>;
 
   return (
-    <div>
+    <div style={{ padding: "10px 0" }}>
       <OrderList orders={orders} />
     </div>
   );

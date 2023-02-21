@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Grid, Text } from "@nextui-org/react";
+import { Grid } from "@nextui-org/react";
 import Order from "./Order";
 
 const OrderList = ({ orders }: { orders: any }) => {
