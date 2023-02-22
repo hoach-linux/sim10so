@@ -20,7 +20,7 @@ const AdminOrder = () => {
   if (!orders || !orders.length)
     return (
       <Text h1 css={{ textAlign: "center", padding: "10px 0" }}>
-        Bạn không có đơn đặt hàng bây giờ
+        Không có đơn đặt hàng bây giờ
       </Text>
     );
   if (error) return <Text>{error.message}</Text>;
