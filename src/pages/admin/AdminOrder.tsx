@@ -1,48 +1,63 @@
 import * as React from "react";
 import OrderList from "../../components/Admin/OrderList";
-import { Loading, Spacer, Text } from "@nextui-org/react";
-import { useState } from "react";
+import { Button, Loading, Spacer, Text } from "@nextui-org/react";
+import { useState, useEffect } from "react";
 import supabase from "../../supabase";
+import { useFetching } from "../../hooks/useFetching";
 
 const AdminOrder = () => {
   const channel = supabase.channel("orders");
   const [orders, setOrders]: [orders: any, setOrders: any] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError]: [error: any, setError: any] = useState("");
   const ordersStatus = "active";
+  const [ordersFetching, loading, error] = useFetching(async () => {
+    let { data: data } = await supabase
+      .from("orders")
+      .select("*")
+      .eq("status", "active");
 
-  channel.on(
-    "postgres_changes",
-    {
-      event: "INSERT",
-      schema: "public",
-      table: "orders",
-      filter: `status=eq.${ordersStatus}`,
-    },
-    (payload) => console.log(payload)
-  );
-  channel.on(
-    "postgres_changes",
-    {
-      event: "DELETE",
-      schema: "public",
-      table: "orders",
-      filter: `status=eq.${ordersStatus}`,
-    },
-    (payload) => console.log(payload)
-  );
-  channel.subscribe(async (status) => {
-    if (status === "SUBSCRIBED") {
-      const res = await supabase.from("orders").select("*");
-
-      if (res.data) {
-        setOrders(res.data.filter((order) => order.status == "active"));
-      } else if (res.error) {
-        setError(res.error);
-      }
-      setLoading(false);
-    }
+    setOrders(data);
   });
+
+  useEffect(() => {
+    ordersFetching();
+  }, []);
+
+  channel
+    .on(
+      "postgres_changes",
+      {
+        event: "INSERT",
+        schema: "public",
+        table: "orders",
+      },
+      (data) => setOrders([data.new, ...orders])
+    )
+    .on(
+      "postgres_changes",
+      {
+        event: "DELETE",
+        schema: "public",
+        table: "orders",
+      },
+      (data) =>
+        setOrders(orders.filter((order: any) => order.id !== data.old.id))
+    )
+    .on(
+      "postgres_changes",
+      {
+        event: "UPDATE",
+        schema: "public",
+        table: "orders",
+      },
+      async () => {
+        let { data: data } = await supabase
+          .from("orders")
+          .select("*")
+          .eq("status", "active");
+        setOrders(data);
+      }
+    )
+    .subscribe();
 
   if (loading)
     return (
