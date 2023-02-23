@@ -7,6 +7,7 @@ import App from "../App";
 import Admin from "../pages/admin/Admin";
 import AdminOrder from "../pages/admin/AdminOrder";
 import Login from "../pages/admin/Login";
+import AdminHome from "../pages/admin/AdminHome";
 
 export const routes = createBrowserRouter([
   {
@@ -24,6 +25,7 @@ export const routes = createBrowserRouter([
     element: <Admin />,
     errorElement: <ErrorPage />,
     children: [
+      { path: "", element: <AdminHome /> },
       { path: "order", element: <AdminOrder /> },
       { path: "login", element: <Login /> },
     ],

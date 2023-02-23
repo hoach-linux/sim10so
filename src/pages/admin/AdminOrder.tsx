@@ -4,14 +4,12 @@ import { Loading, Spacer, Text } from "@nextui-org/react";
 import { useState, useEffect } from "react";
 import supabase from "../../supabase";
 import { useFetching } from "../../hooks/useFetching";
-import { useNavigate } from "react-router-dom";
+import { useCheckingRegister } from "../../hooks/useCheckingRegister";
 
 const AdminOrder = () => {
   const channel = supabase.channel("orders");
   const [orders, setOrders]: [orders: any, setOrders: any] = useState([]);
   const ordersStatus = "active";
-  const navigate = useNavigate();
-  const regitered = localStorage.getItem("sb-vxdcqhvkrmgpvrdwujld-auth-token");
   const [ordersFetching, loading, error] = useFetching(async () => {
     let { data: data } = await supabase
       .from("orders")
@@ -20,11 +18,7 @@ const AdminOrder = () => {
 
     setOrders(data);
   });
-  const checkRegister = () => {
-    if (regitered) return;
-
-    return navigate("/admin/login");
-  };
+  const checkRegister = useCheckingRegister("/admin/login");
 
   useEffect(() => {
     checkRegister();
