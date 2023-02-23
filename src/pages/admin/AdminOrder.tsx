@@ -1,24 +1,33 @@
 import * as React from "react";
 import OrderList from "../../components/Admin/OrderList";
-import { Button, Loading, Spacer, Text } from "@nextui-org/react";
+import { Loading, Spacer, Text } from "@nextui-org/react";
 import { useState, useEffect } from "react";
 import supabase from "../../supabase";
 import { useFetching } from "../../hooks/useFetching";
+import { useNavigate } from "react-router-dom";
 
 const AdminOrder = () => {
   const channel = supabase.channel("orders");
   const [orders, setOrders]: [orders: any, setOrders: any] = useState([]);
   const ordersStatus = "active";
+  const navigate = useNavigate();
+  const regitered = localStorage.getItem("sb-vxdcqhvkrmgpvrdwujld-auth-token");
   const [ordersFetching, loading, error] = useFetching(async () => {
     let { data: data } = await supabase
       .from("orders")
       .select("*")
-      .eq("status", "active");
+      .eq("status", ordersStatus);
 
     setOrders(data);
   });
+  const checkRegister = () => {
+    if (regitered) return;
+
+    return navigate("/admin/login");
+  };
 
   useEffect(() => {
+    checkRegister();
     ordersFetching();
   }, []);
 
@@ -53,7 +62,7 @@ const AdminOrder = () => {
         let { data: data } = await supabase
           .from("orders")
           .select("*")
-          .eq("status", "active");
+          .eq("status", ordersStatus);
         setOrders(data);
       }
     )
