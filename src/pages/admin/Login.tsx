@@ -3,7 +3,8 @@ import supabase from "../../supabase";
 import { useNavigate } from "react-router-dom";
 import { Password } from "../../components/icons/Password";
 import { Mail } from "../../components/icons/Mail";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useCheckingRegister } from "../../hooks/useCheckingRegister";
 
 function Login() {
   const navigate = useNavigate();
@@ -12,6 +13,11 @@ function Login() {
     errorMessage: any,
     setErrorMessage: any
   ] = useState(null);
+  const [checkRegister, checkNotRegister] = useCheckingRegister("/admin");
+
+  useEffect(() => {
+    checkNotRegister();
+  }, []);
 
   async function signInWithEmail() {
     const { data, error } = await supabase.auth.signInWithOtp({

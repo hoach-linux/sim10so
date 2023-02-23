@@ -18,7 +18,7 @@ const AdminOrder = () => {
 
     setOrders(data);
   });
-  const checkRegister = useCheckingRegister("/admin/login");
+  const [checkRegister] = useCheckingRegister("/admin/login");
 
   useEffect(() => {
     checkRegister();

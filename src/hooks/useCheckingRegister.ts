@@ -9,6 +9,11 @@ export const useCheckingRegister = (link: string) => {
 
     return navigate(link);
   };
+  const checkNotRegister = () => {
+    if (!regitered) return;
 
-  return checkRegister;
+    return navigate(link);
+  };
+
+  return [checkRegister, checkNotRegister];
 };

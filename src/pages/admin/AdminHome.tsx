@@ -4,7 +4,7 @@ import { useCheckingRegister } from "../../hooks/useCheckingRegister";
 import { useEffect } from "react";
 
 const AdminHome = () => {
-  const checkRegister = useCheckingRegister("/admin/login");
+  const [checkRegister] = useCheckingRegister("/admin/login");
 
   useEffect(() => {
     checkRegister();
