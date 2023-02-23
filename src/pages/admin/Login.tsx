@@ -1,4 +1,4 @@
-import { Button, Card, Input, Text } from "@nextui-org/react";
+import { Button, Card, Input, Link, Loading, Text } from "@nextui-org/react";
 import supabase from "../../supabase";
 import { useNavigate } from "react-router-dom";
 import { Password } from "../../components/icons/Password";
@@ -9,17 +9,21 @@ import { useCheckingRegister } from "../../hooks/useCheckingRegister";
 function Login() {
   const navigate = useNavigate();
   const [userData, setUserData] = useState({ email: "", password: "" });
+  const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage]: [
     errorMessage: any,
     setErrorMessage: any
   ] = useState(null);
   const [checkRegister, checkNotRegister] = useCheckingRegister("/admin");
+  const [showLinkToGmail, setShowLinkToGmail] = useState(false);
 
   useEffect(() => {
     checkNotRegister();
   }, []);
 
   async function signInWithEmail() {
+    setLoading(true);
+
     const { data, error } = await supabase.auth.signInWithOtp({
       email: userData.email,
       options: {
@@ -28,7 +32,14 @@ function Login() {
       },
     });
 
-    setErrorMessage(error?.message);
+    if (error) {
+      setErrorMessage(error?.message);
+      setShowLinkToGmail(false);
+    } else {
+      setShowLinkToGmail(true);
+    }
+
+    setLoading(false);
   }
 
   return (
@@ -58,13 +69,24 @@ function Login() {
               contentLeft={<Mail fill="currentColor" />}
               css={{ mb: "20px" }}
             />
-            {errorMessage !== null && <Text color="error">{errorMessage}</Text>}
+            {showLinkToGmail && (
+              <Link href="https://mail.google.com/" underline block isExternal>
+                Vui lòng kiểm tra email của bạn
+              </Link>
+            )}
+            {errorMessage !== null && !showLinkToGmail && (
+              <Text color="error">{errorMessage}</Text>
+            )}
             <Button
               size="lg"
               onClick={signInWithEmail}
               css={{ minWidth: "100%" }}
             >
-              Đăng nhập
+              {loading ? (
+                <Loading size="sm" color="currentColor" />
+              ) : (
+                <p>Đăng nhập</p>
+              )}
             </Button>
           </form>
         </Card.Body>
