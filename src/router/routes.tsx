@@ -8,6 +8,7 @@ import Admin from "../pages/admin/Admin";
 import AdminOrder from "../pages/admin/AdminOrder";
 import Login from "../pages/admin/Login";
 import AdminHome from "../pages/admin/AdminHome";
+import PushSim from "../pages/admin/PushSim";
 
 export const routes = createBrowserRouter([
   {
@@ -28,6 +29,7 @@ export const routes = createBrowserRouter([
       { path: "", element: <AdminHome /> },
       { path: "order", element: <AdminOrder /> },
       { path: "login", element: <Login /> },
+      { path: "push_sim", element: <PushSim /> },
     ],
   },
 ]);
