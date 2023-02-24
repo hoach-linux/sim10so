@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import supabase from "../../supabase";
 import { useFetching } from "../../hooks/useFetching";
 import { useCheckingRegister } from "../../hooks/useCheckingRegister";
+import { motion } from "framer-motion";
 
 const AdminOrder = () => {
   const channel = supabase.channel("orders");
@@ -80,9 +81,15 @@ const AdminOrder = () => {
   if (error) return <Text>{error}</Text>;
 
   return (
-    <div style={{ padding: "10px 0" }}>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.75, ease: "easeOut" }}
+      exit={{ opacity: 0 }}
+      style={{ padding: "10px 0" }}
+    >
       <OrderList orders={orders} />
-    </div>
+    </motion.div>
   );
 };
 

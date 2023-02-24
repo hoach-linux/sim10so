@@ -5,6 +5,7 @@ import { Password } from "../../components/icons/Password";
 import { Mail } from "../../components/icons/Mail";
 import { useEffect, useState } from "react";
 import { useCheckingRegister } from "../../hooks/useCheckingRegister";
+import { motion } from "framer-motion";
 
 function Login() {
   const navigate = useNavigate();
@@ -43,9 +44,13 @@ function Login() {
   }
 
   return (
-    <div
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.75, ease: "easeOut" }}
+      exit={{ opacity: 0 }}
       style={{
-        minHeight: "100vh",
+        minHeight: "90vh",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
@@ -91,7 +96,7 @@ function Login() {
           </form>
         </Card.Body>
       </Card>
-    </div>
+    </motion.div>
   );
 }
 

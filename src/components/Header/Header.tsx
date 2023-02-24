@@ -46,7 +46,11 @@ const Header = () => {
           <SimList sims={searchSim} title={searchTitle} />
         )}
       </div>
-      <Grid.Container gap={2} justify="center" css={{ marginBottom: "62px" }}>
+      <Grid.Container
+        gap={2}
+        justify="center"
+        css={{ marginBottom: "62px", marginTop: "10px" }}
+      >
         <Grid xs={12} sm={4}>
           <Card1 />
         </Grid>
