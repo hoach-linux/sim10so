@@ -4,9 +4,7 @@ import { Card, Grid, Text } from "@nextui-org/react";
 import { Modal, Input, Row, Loading, Button } from "@nextui-org/react";
 import { faHouse, faUser, faPhone } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import axios from "axios";
 import { useFetching } from "../hooks/useFetching";
-import SimService from "../API/SimService";
 import supabase from "../supabase";
 
 export default function Sim({ sim }: { sim: any }) {
