@@ -110,7 +110,6 @@ export default function Sim({ sim }: { sim: any }) {
             placeholder="Họ tên"
             required
             minLength={1}
-            value={orderData.name}
             onChange={(e) =>
               setOrderData({ ...orderData, name: e.target.value })
             }
@@ -125,7 +124,6 @@ export default function Sim({ sim }: { sim: any }) {
             placeholder="Địa chỉ"
             required
             minLength={1}
-            value={orderData.address}
             onChange={(e) =>
               setOrderData({ ...orderData, address: e.target.value })
             }
@@ -140,7 +138,6 @@ export default function Sim({ sim }: { sim: any }) {
             placeholder="Điện thoại"
             required
             minLength={1}
-            value={orderData.numberPhone}
             type="number"
             onChange={(e) =>
               setOrderData({ ...orderData, numberPhone: e.target.value })
