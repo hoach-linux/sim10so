@@ -35,7 +35,6 @@ const Header = () => {
         <Input
           placeholder="Tìm sim trên sim10so"
           size="xl"
-          value={searchInput}
           onChange={(e: any) => setSearchInput(e.target.value)}
           color="primary"
           bordered
