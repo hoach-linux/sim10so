@@ -7,7 +7,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useFetching } from "../hooks/useFetching";
 import supabase from "../supabase";
 
-export default function Sim({ sim }: { sim: any }) {
+export default function Sim({
+  sim,
+  openSnackbar,
+}: {
+  sim: any;
+  openSnackbar: any;
+}) {
   const [provider, setProvider] = useState(sim.provider.toLowerCase().trim());
   const providers = {
     mobifone: "b26950bd-e9e5-4d37-a819-76137c3a8bb6",
@@ -40,6 +46,7 @@ export default function Sim({ sim }: { sim: any }) {
 
       closeModal();
       setDisable(false);
+      openSnackbar(true);
     } else {
       setShowRequired(true);
     }
