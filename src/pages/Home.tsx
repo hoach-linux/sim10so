@@ -12,7 +12,7 @@ const Home = () => {
       transition={{ duration: 0.75, ease: "easeOut" }}
       exit={{ opacity: 0 }}
     >
-      <Grid.Container gap={2} justify="center">
+      <Grid.Container gap={1} justify="center">
         <Grid xs={0} sm={3}>
           <Sidebar />
         </Grid>

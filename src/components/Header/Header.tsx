@@ -37,15 +37,16 @@ const Header = () => {
           size="xl"
           onChange={(e: any) => setSearchInput(e.target.value)}
           color="primary"
+          aria-label="input"
           bordered
           clearable
-          css={{ minWidth: "100%", padding: "0 10px 10px 10px" }}
+          css={{ minWidth: "100%", padding: "0 5px 5px 5px" }}
         />
         {searchSim.length >= 1 && (
           <SimList sims={searchSim} title={searchTitle} />
         )}
       </div>
-      <Grid.Container gap={2} justify="center" css={{ marginBottom: "62px" }}>
+      <Grid.Container gap={1} justify="center" css={{ marginBottom: "62px" }}>
         <Grid xs={12} sm={4}>
           <Card1 />
         </Grid>

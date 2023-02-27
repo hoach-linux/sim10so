@@ -87,7 +87,7 @@ const NavbarComponent = () => {
           SIM10SO.COM
         </Text>
       </Navbar.Brand>
-      <Navbar.Content enableCursorHighlight hideIn="sm" variant="default">
+      <Navbar.Content enableCursorHighlight hideIn="sm" variant="underline">
         <Navbar.Link isActive>
           <Link to="/">Trang chủ</Link>
         </Navbar.Link>
