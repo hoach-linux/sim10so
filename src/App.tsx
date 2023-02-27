@@ -36,12 +36,14 @@ function App() {
   }, []);
   return (
     <NextUIProvider theme={isDark ? darkTheme : lightTheme}>
+      <Navbar />
       <Box
         css={{
-          maxW: "100%",
+          maxWidth: "1380px",
+          margin: "0 auto",
+          padding: "10px",
         }}
       >
-        <Navbar />
         <Outlet />
       </Box>
     </NextUIProvider>

@@ -9,12 +9,14 @@ import {
   Button,
   changeTheme,
   useTheme,
+  Collapse,
 } from "@nextui-org/react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPhone } from "@fortawesome/free-solid-svg-icons";
 import { SunIcon } from "./icons/SunIcon";
 import { MoonIcon } from "./icons/MoonIcon";
+import { useState } from "react";
 
 const NavbarComponent = () => {
   const collapseItems = [
@@ -26,6 +28,32 @@ const NavbarComponent = () => {
       link: "https://xemvanmenh.net/xem-boi-so-dien-thoai.html",
     },
   ];
+  const [simPrice, setSimPrice] = useState([
+    "Sim dưới 500k",
+    "Sim 1 - 3 triệu",
+    "Sim 3 - 5 triệu",
+    "Sim 5 - 10 triệu",
+    "Sim 10 - 20 triệu",
+    "Sim 20 - 50 triệu",
+    "Sim 50 - 100 triệu",
+    "Sim 100 - 200 triệu",
+    "Sim 200 - 500 triệu",
+    "Sim trên 500 triệu",
+  ]);
+  const [simDangCap, setSimDangCap] = useState([
+    "Sim Lục Quý",
+    "Sim Ngũ Quý",
+    "Sim Tứ Quý",
+    "Sim Tam Hoa Kép",
+  ]);
+  const [simProvider, setSimProvider] = useState([
+    "Sim Viettel",
+    "Sim Mobifone",
+    "Sim Vinaphone",
+    "Sim Gmobile",
+    "Sim Vietnamobile",
+  ]);
+
   const { isDark } = useTheme();
 
   const changeMainTheme = () => {
@@ -126,6 +154,37 @@ const NavbarComponent = () => {
             </Link>
           </Navbar.CollapseItem>
         ))}
+        <Navbar.CollapseItem css={{ padding: "0" }}>
+          <Collapse.Group>
+            <Collapse title="Sim theo giá">
+              {simPrice.map((item, index) => (
+                <Link to={item} key={item}>
+                  <NextLink block color="default" css={{ minWidth: "100%" }}>
+                    {item}
+                  </NextLink>
+                </Link>
+              ))}
+            </Collapse>
+            <Collapse title="Sim đẳng cấp">
+              {simDangCap.map((item, index) => (
+                <Link to={item} key={item}>
+                  <NextLink block color="default" css={{ minWidth: "100%" }}>
+                    {item}
+                  </NextLink>
+                </Link>
+              ))}
+            </Collapse>
+            <Collapse title="Sim theo mạng">
+              {simProvider.map((item, index) => (
+                <Link to={item} key={item}>
+                  <NextLink block color="default" css={{ minWidth: "100%" }}>
+                    {item}
+                  </NextLink>
+                </Link>
+              ))}
+            </Collapse>
+          </Collapse.Group>
+        </Navbar.CollapseItem>
       </Navbar.Collapse>
     </Navbar>
   );

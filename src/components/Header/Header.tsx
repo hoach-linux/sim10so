@@ -39,17 +39,13 @@ const Header = () => {
           color="primary"
           bordered
           clearable
-          css={{ minWidth: "100%", padding: "10px" }}
+          css={{ minWidth: "100%", padding: "0 10px 10px 10px" }}
         />
         {searchSim.length >= 1 && (
           <SimList sims={searchSim} title={searchTitle} />
         )}
       </div>
-      <Grid.Container
-        gap={2}
-        justify="center"
-        css={{ marginBottom: "62px", marginTop: "10px" }}
-      >
+      <Grid.Container gap={2} justify="center" css={{ marginBottom: "62px" }}>
         <Grid xs={12} sm={4}>
           <Card1 />
         </Grid>
