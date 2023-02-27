@@ -35,7 +35,7 @@ export default class SimService {
 
     if (parameters.limit && parameters.page && parameters.keyword) {
       sim = await axios.get(
-        `https://directus.hoach.skryonline.com/items/sim_list?search=${parameters.keyword}`,
+        `https://directus.hoach.skryonline.com/items/sim_list?filter={"number":{"_contains":"${parameters.keyword}"}}`,
         {
           params: {
             limit: parameters.limit,
@@ -45,7 +45,7 @@ export default class SimService {
       );
     } else {
       sim = await axios.get(
-        `https://directus.hoach.skryonline.com/items/sim_list?search=${parameters.keyword}`
+        `https://directus.hoach.skryonline.com/items/sim_list?filter={"number":{"_contains":"${parameters.keyword}"}}`
       );
     }
     return sim.data;
