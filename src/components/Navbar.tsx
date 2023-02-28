@@ -91,7 +91,7 @@ const NavbarComponent = () => {
         <Link
           to="/"
           style={{
-            background: "#000",
+            background: "rgb(0, 114, 245)",
             color: "#fff",
             padding: "20px",
             borderRadius: "10px",
