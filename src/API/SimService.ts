@@ -126,6 +126,36 @@ export default class SimService {
         method: "_between",
         parameter: "200000000, 500000000",
       });
+    } else if (filter === "Sim Viettel") {
+      sim = await fetchingSim({
+        items: "provider",
+        method: "_eq",
+        parameter: "Viettel",
+      });
+    } else if (filter === "Sim Mobifone") {
+      sim = await fetchingSim({
+        items: "provider",
+        method: "_eq",
+        parameter: "Mobifone",
+      });
+    } else if (filter === "Sim Vinaphone") {
+      sim = await fetchingSim({
+        items: "provider",
+        method: "_eq",
+        parameter: "Vinaphone",
+      });
+    } else if (filter === "Sim Gmobile") {
+      sim = await fetchingSim({
+        items: "provider",
+        method: "_eq",
+        parameter: "Gmobile",
+      });
+    } else if (filter === "Sim Vietnamobile") {
+      sim = await fetchingSim({
+        items: "provider",
+        method: "_eq",
+        parameter: "Vietnamobile",
+      });
     }
 
     return sim.data;
