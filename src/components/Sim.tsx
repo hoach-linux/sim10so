@@ -89,9 +89,7 @@ export default function Sim({
       </Card.Header>
       <Card.Body css={{ py: "$2" }}>
         <Text>{sim.number}</Text>
-        <Text>
-          {Number(sim.price.split(",").join("")).toLocaleString("vn")}₫
-        </Text>
+        <Text>{sim.price.toLocaleString("vn")}₫</Text>
       </Card.Body>
       <Modal
         blur

@@ -7,7 +7,7 @@ const ThueSim = () => {
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      transition={{ duration: 0.75, ease: "easeOut" }}
+      transition={{ duration: 0.75, ease: "easeInOut" }}
       exit={{ opacity: 0 }}
     >
       <Text css={{ textAlign: "center" }} h1>

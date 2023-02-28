@@ -17,7 +17,7 @@ interface ISim {
   provider: string;
 }
 
-const SimList = ({ sims, title }: { sims: any; title: string }) => {
+const SimList = ({ sims, title }: { sims: any; title: any }) => {
   const [showSnackbar, setShowSnackbar] = useState(false);
   const openSnackbar = (show: boolean) => setShowSnackbar(show);
   const closeSnackbar = () => setShowSnackbar(false);

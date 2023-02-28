@@ -5,7 +5,8 @@ import {
   Spacer,
   Text,
 } from "@nextui-org/react";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useSearchParams } from "react-router-dom";
 
 function SidebarCard({
   items,
@@ -14,6 +15,9 @@ function SidebarCard({
   items: any;
   filterTitle: string;
 }) {
+  const [query, setquery] = useState("");
+  const [searchParams, setSearchParams] = useSearchParams({});
+
   return (
     <Card css={{ mw: "100%" }} variant="bordered">
       <Card.Header>
@@ -24,11 +28,14 @@ function SidebarCard({
         <ul>
           {items.map((item: string) => (
             <div key={item}>
-              <Link to={item}>
-                <NextLink block color="default" css={{ minWidth: "100%" }}>
-                  {item}
-                </NextLink>
-              </Link>
+              <NextLink
+                block
+                onClick={() => setSearchParams({ query: item })}
+                color="default"
+                css={{ minWidth: "100%" }}
+              >
+                {item}
+              </NextLink>
             </div>
           ))}
         </ul>

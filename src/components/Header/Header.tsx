@@ -33,7 +33,7 @@ const Header = () => {
     <div>
       <div style={{ minWidth: "100%" }}>
         <Input
-          placeholder="Tìm sim trên sim10so"
+          placeholder="Tìm sim trên simdep10so"
           size="xl"
           onChange={(e: any) => setSearchInput(e.target.value)}
           color="primary"

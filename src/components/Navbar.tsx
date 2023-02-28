@@ -88,9 +88,17 @@ const NavbarComponent = () => {
         </Text>
       </Navbar.Brand>
       <Navbar.Content enableCursorHighlight hideIn="sm" variant="underline">
-        <Navbar.Link isActive>
-          <Link to="/">Trang chủ</Link>
-        </Navbar.Link>
+        <Link
+          to="/"
+          style={{
+            background: "#000",
+            color: "#fff",
+            padding: "20px",
+            borderRadius: "10px",
+          }}
+        >
+          Trang chủ
+        </Link>
         <Navbar.Link>
           <Link to="/thuesimvip">Thuê Sim VIP</Link>
         </Navbar.Link>
