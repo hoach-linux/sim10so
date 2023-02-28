@@ -8,28 +8,37 @@ import { useState, useEffect } from "react";
 import SimList from "../components/SimList";
 import { useFetching } from "../hooks/useFetching";
 import SimService from "../API/SimService";
+import { Pagination } from "@nextui-org/react";
 
 const Home = () => {
+  const limit = 24;
   const [searchParams, setSearchParams] = useSearchParams();
   const [showFilteredList, setShowFilteredList] = useState(false);
   const [filteredSimList, setFilteredSimList] = useState([]);
+  const [totalPage, setTotalPage] = useState(1);
+  const [page, setPage] = useState(1);
   const [fetchFilteredSim, loading] = useFetching(async () => {
     const response: any = await SimService.getSimFilterPrice(
-      searchParams.get("query")
+      searchParams.get("query"),
+      page
     );
 
     setFilteredSimList(response.data);
+    setTotalPage(Math.ceil(response.meta.filter_count / limit));
   });
 
   useEffect(() => {
     if (searchParams.get("query")) {
       setShowFilteredList(true);
       fetchFilteredSim();
-      console.log(searchParams.get("query"));
     } else {
       setShowFilteredList(false);
     }
-  }, [searchParams]);
+  }, [searchParams, page]);
+
+  function resetPage(number: number) {
+    setPage(number);
+  }
 
   return (
     <motion.div
@@ -40,11 +49,25 @@ const Home = () => {
     >
       <Grid.Container gap={1} justify="center">
         <Grid xs={0} sm={3}>
-          <Sidebar />
+          <Sidebar setPage={resetPage} />
         </Grid>
         <Grid xs={12} sm={9}>
           {showFilteredList && !loading ? (
-            <SimList sims={filteredSimList} title={searchParams.get("query")} />
+            <div>
+              <SimList
+                sims={filteredSimList}
+                title={searchParams.get("query")}
+              />
+              {totalPage > 1 && (
+                <Pagination
+                  onChange={(e) => setPage(e)}
+                  total={totalPage}
+                  controls={false}
+                  size="lg"
+                  initialPage={page}
+                />
+              )}
+            </div>
           ) : loading ? (
             <div
               style={{

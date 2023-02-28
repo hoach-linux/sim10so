@@ -50,7 +50,7 @@ export default class SimService {
     }
     return sim.data;
   }
-  static async getSimFilterPrice(filter: any) {
+  static async getSimFilterPrice(filter: any, page: number) {
     let sim: any;
 
     async function fetchingSim(parameters: any) {
@@ -59,7 +59,8 @@ export default class SimService {
         {
           params: {
             limit: 24,
-            page: 1,
+            page: page,
+            meta: "filter_count",
           },
         }
       );
@@ -69,7 +70,7 @@ export default class SimService {
       sim = await fetchingSim({
         items: "price",
         method: "_lte",
-        parameter: "2500000",
+        parameter: "500000",
       });
     } else if (filter === "Sim trên 500 triệu") {
       sim = await fetchingSim({

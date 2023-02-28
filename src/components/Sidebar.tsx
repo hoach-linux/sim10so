@@ -2,7 +2,7 @@ import { useState } from "react";
 import SidebarCard from "./SidebarCard";
 import { Spacer } from "@nextui-org/react";
 
-function Sidebar() {
+function Sidebar({ setPage }: { setPage: any }) {
   const [simPrice, setSimPrice] = useState([
     "Sim dưới 500k",
     "Sim 1 - 3 triệu",
@@ -31,11 +31,23 @@ function Sidebar() {
 
   return (
     <div style={{ minWidth: "100%" }}>
-      <SidebarCard items={simPrice} filterTitle="Sim theo giá" />
+      <SidebarCard
+        items={simPrice}
+        setPage={setPage}
+        filterTitle="Sim theo giá"
+      />
       <Spacer />
-      <SidebarCard items={simDangCap} filterTitle="Sim đẳng cấp" />
+      <SidebarCard
+        items={simDangCap}
+        setPage={setPage}
+        filterTitle="Sim đẳng cấp"
+      />
       <Spacer />
-      <SidebarCard items={simProvider} filterTitle="Sim theo mạng" />
+      <SidebarCard
+        items={simProvider}
+        setPage={setPage}
+        filterTitle="Sim theo mạng"
+      />
     </div>
   );
 }

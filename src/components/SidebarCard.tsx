@@ -11,9 +11,11 @@ import { Link, useSearchParams } from "react-router-dom";
 function SidebarCard({
   items,
   filterTitle,
+  setPage,
 }: {
   items: any;
   filterTitle: string;
+  setPage: any;
 }) {
   const [query, setquery] = useState("");
   const [searchParams, setSearchParams] = useSearchParams({});
@@ -30,7 +32,10 @@ function SidebarCard({
             <div key={item}>
               <NextLink
                 block
-                onClick={() => setSearchParams({ query: item })}
+                onClick={() => {
+                  setPage(1);
+                  setSearchParams({ query: item });
+                }}
                 color="default"
                 css={{ minWidth: "100%" }}
               >
