@@ -46,7 +46,6 @@ const NavbarComponent = () => {
     "Sim Lục Quý",
     "Sim Ngũ Quý",
     "Sim Tứ Quý",
-    "Sim Tam Hoa Kép",
   ]);
   const [simProvider, setSimProvider] = useState([
     "Sim Viettel",
