@@ -9,6 +9,7 @@ import SimList from "../components/SimList";
 import { useFetching } from "../hooks/useFetching";
 import SimService from "../API/SimService";
 import { Pagination } from "@nextui-org/react";
+import useStore from "../store/useStore";
 
 const Home = () => {
   const limit = 24;
@@ -16,7 +17,8 @@ const Home = () => {
   const [showFilteredList, setShowFilteredList] = useState(false);
   const [filteredSimList, setFilteredSimList] = useState([]);
   const [totalPage, setTotalPage] = useState(1);
-  const [page, setPage] = useState(1);
+  const page = useStore((state: any) => state.page);
+  const setPage = useStore((state: any) => state.setPage);
   const [fetchFilteredSim, loading] = useFetching(async () => {
     const response: any = await SimService.getSimFilterPrice(
       searchParams.get("query"),
@@ -36,10 +38,6 @@ const Home = () => {
     }
   }, [searchParams, page]);
 
-  function resetPage(number: number) {
-    setPage(number);
-  }
-
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -49,7 +47,7 @@ const Home = () => {
     >
       <Grid.Container gap={1} justify="center">
         <Grid xs={0} sm={3}>
-          <Sidebar setPage={resetPage} />
+          <Sidebar />
         </Grid>
         <Grid xs={12} sm={9}>
           {showFilteredList && !loading ? (
@@ -60,6 +58,7 @@ const Home = () => {
               />
               {totalPage > 1 && (
                 <Pagination
+                  css={{ zIndex: "1" }}
                   onChange={(e) => setPage(e)}
                   total={totalPage}
                   controls={false}

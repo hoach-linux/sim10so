@@ -1,16 +1,16 @@
 import { Card, Link as NextLink, Text } from "@nextui-org/react";
 import { useSearchParams } from "react-router-dom";
+import useStore from "../store/useStore";
 
 function SidebarCard({
   items,
   filterTitle,
-  setPage,
 }: {
   items: any;
   filterTitle: string;
-  setPage: any;
 }) {
   const [searchParams, setSearchParams] = useSearchParams({});
+  const resetPage = useStore((state: any) => state.resetPage);
 
   return (
     <Card css={{ mw: "100%" }} variant="bordered">
@@ -25,7 +25,7 @@ function SidebarCard({
               <NextLink
                 block
                 onClick={() => {
-                  setPage(1);
+                  resetPage();
                   setSearchParams({ query: item });
                 }}
                 color="default"

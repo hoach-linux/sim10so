@@ -17,6 +17,7 @@ import { faPhone } from "@fortawesome/free-solid-svg-icons";
 import { SunIcon } from "./icons/SunIcon";
 import { MoonIcon } from "./icons/MoonIcon";
 import { useState } from "react";
+import useStore from "../store/useStore";
 
 const NavbarComponent = () => {
   const [searchParams, setSearchParams] = useSearchParams({});
@@ -56,7 +57,7 @@ const NavbarComponent = () => {
   ]);
 
   const { isDark } = useTheme();
-
+  const resetPage = useStore((state: any) => state.resetPage);
   const changeMainTheme = () => {
     const nextTheme = isDark ? "light" : "dark";
     window.localStorage.setItem("data-theme", nextTheme); // you can use any storage
@@ -152,7 +153,7 @@ const NavbarComponent = () => {
           </Dropdown.Menu>
         </Dropdown>
       </Navbar.Content>
-      <Navbar.Collapse>
+      <Navbar.Collapse css={{ zIndex: "100" }}>
         {collapseItems.map((item, index) => (
           <Navbar.CollapseItem key={item.link} css={{ padding: "0" }}>
             <Link
@@ -172,7 +173,10 @@ const NavbarComponent = () => {
                 <NextLink
                   block
                   color="default"
-                  onClick={() => setSearchParams({ query: item })}
+                  onClick={() => {
+                    resetPage();
+                    setSearchParams({ query: item });
+                  }}
                   css={{ minWidth: "100%" }}
                 >
                   {item}
@@ -184,7 +188,10 @@ const NavbarComponent = () => {
                 <NextLink
                   block
                   color="default"
-                  onClick={() => setSearchParams({ query: item })}
+                  onClick={() => {
+                    resetPage();
+                    setSearchParams({ query: item });
+                  }}
                   css={{ minWidth: "100%" }}
                 >
                   {item}
@@ -196,7 +203,10 @@ const NavbarComponent = () => {
                 <Link to={item} key={item}>
                   <NextLink
                     block
-                    onClick={() => setSearchParams({ query: item })}
+                    onClick={() => {
+                      resetPage();
+                      setSearchParams({ query: item });
+                    }}
                     color="default"
                     css={{ minWidth: "100%" }}
                   >
