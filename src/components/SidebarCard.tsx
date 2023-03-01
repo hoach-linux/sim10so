@@ -1,12 +1,5 @@
-import {
-  Button,
-  Card,
-  Link as NextLink,
-  Spacer,
-  Text,
-} from "@nextui-org/react";
-import { useEffect, useState } from "react";
-import { Link, useSearchParams } from "react-router-dom";
+import { Card, Link as NextLink, Text } from "@nextui-org/react";
+import { useSearchParams } from "react-router-dom";
 
 function SidebarCard({
   items,
@@ -17,7 +10,6 @@ function SidebarCard({
   filterTitle: string;
   setPage: any;
 }) {
-  const [query, setquery] = useState("");
   const [searchParams, setSearchParams] = useSearchParams({});
 
   return (

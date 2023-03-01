@@ -11,7 +11,7 @@ import {
   useTheme,
   Collapse,
 } from "@nextui-org/react";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPhone } from "@fortawesome/free-solid-svg-icons";
 import { SunIcon } from "./icons/SunIcon";
@@ -19,6 +19,7 @@ import { MoonIcon } from "./icons/MoonIcon";
 import { useState } from "react";
 
 const NavbarComponent = () => {
+  const [searchParams, setSearchParams] = useSearchParams({});
   const collapseItems = [
     { name: "Trang chủ", link: "/" },
     { name: "Thuê Sim VIP", link: "/thuesimvip" },
@@ -83,9 +84,11 @@ const NavbarComponent = () => {
         }}
       />
       <Navbar.Brand>
-        <Text b color="inherit">
-          SIM10SO.COM
-        </Text>
+        <Link to="/">
+          <Text b color="inherit">
+            SIM10SO.COM
+          </Text>
+        </Link>
       </Navbar.Brand>
       <Navbar.Content enableCursorHighlight hideIn="sm" variant="underline">
         <Link
@@ -166,26 +169,37 @@ const NavbarComponent = () => {
           <Collapse.Group>
             <Collapse title="Sim theo giá">
               {simPrice.map((item, index) => (
-                <Link to={item} key={item}>
-                  <NextLink block color="default" css={{ minWidth: "100%" }}>
-                    {item}
-                  </NextLink>
-                </Link>
+                <NextLink
+                  block
+                  color="default"
+                  onClick={() => setSearchParams({ query: item })}
+                  css={{ minWidth: "100%" }}
+                >
+                  {item}
+                </NextLink>
               ))}
             </Collapse>
             <Collapse title="Sim đẳng cấp">
               {simDangCap.map((item, index) => (
-                <Link to={item} key={item}>
-                  <NextLink block color="default" css={{ minWidth: "100%" }}>
-                    {item}
-                  </NextLink>
-                </Link>
+                <NextLink
+                  block
+                  color="default"
+                  onClick={() => setSearchParams({ query: item })}
+                  css={{ minWidth: "100%" }}
+                >
+                  {item}
+                </NextLink>
               ))}
             </Collapse>
             <Collapse title="Sim theo mạng">
               {simProvider.map((item, index) => (
                 <Link to={item} key={item}>
-                  <NextLink block color="default" css={{ minWidth: "100%" }}>
+                  <NextLink
+                    block
+                    onClick={() => setSearchParams({ query: item })}
+                    color="default"
+                    css={{ minWidth: "100%" }}
+                  >
                     {item}
                   </NextLink>
                 </Link>
