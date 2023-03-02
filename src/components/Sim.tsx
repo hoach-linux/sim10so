@@ -59,7 +59,10 @@ export default function Sim({
   return (
     <Card
       isPressable
-      css={{ p: "$6", minWidth: "162px" }}
+      css={{
+        p: "$6",
+        minWidth: "162px",
+      }}
       variant="flat"
       onClick={openModal}
     >
