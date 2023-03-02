@@ -61,6 +61,7 @@ const Home = () => {
                   css={{ zIndex: "1" }}
                   onChange={(e) => setPage(e)}
                   total={totalPage}
+                  shadow
                   controls={false}
                   size="lg"
                   initialPage={page}

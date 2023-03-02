@@ -85,7 +85,7 @@ const NavbarComponent = () => {
       />
       <Navbar.Brand>
         <Link to="/">
-          <Text b color="inherit">
+          <Text b color="default">
             SIM10SO.COM
           </Text>
         </Link>
@@ -94,7 +94,7 @@ const NavbarComponent = () => {
         <Link
           to="/"
           style={{
-            background: "rgb(0, 114, 245)",
+            background: "rgb(0, 0, 0)",
             color: "#fff",
             padding: "20px",
             borderRadius: "10px",
@@ -171,6 +171,7 @@ const NavbarComponent = () => {
               {simPrice.map((item, index) => (
                 <NextLink
                   block
+                  key={item}
                   color="default"
                   onClick={() => {
                     resetPage();
@@ -186,6 +187,7 @@ const NavbarComponent = () => {
               {simDangCap.map((item, index) => (
                 <NextLink
                   block
+                  key={item}
                   color="default"
                   onClick={() => {
                     resetPage();

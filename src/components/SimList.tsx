@@ -26,7 +26,9 @@ const SimList = ({ sims, title }: { sims: any; title: any }) => {
     <div>
       {sims.length > 0 && (
         <div>
-          <Text h2>{title}</Text>
+          <Text h2 css={{ textAlign: "center" }}>
+            {title}
+          </Text>
           <Grid.Container
             gap={1}
             justify="flex-start"

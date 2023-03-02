@@ -52,6 +52,17 @@ export default class SimService {
   }
   static async getSimFilterPrice(filter: any, page: number) {
     let sim: any;
+    let arr4: any[] = [
+      "1111",
+      "2222",
+      "3333",
+      "44444",
+      "5555",
+      "6666",
+      "7777",
+      "8888",
+      "9999",
+    ];
 
     async function fetchingSim(parameters: any) {
       return await axios.get(
@@ -180,6 +191,19 @@ export default class SimService {
       sim = await fetchingSimWithParameters(
         'filter={"_or":[{"number":{"_contains":"1111"}},{"number":{"_contains":"2222"}},{"number":{"_contains":"3333"}},{"number":{"_contains":"4444"}},{"number":{"_contains":"5555"}},{"number":{"_contains":"6666"}},{"number":{"_contains":"7777"}},{"number":{"_contains":"8888"}},{"number":{"_contains":"9999"}}]}'
       );
+      // sim.data.data = sim.data.data.filter((item: any) => {
+      //   let test = arr4.map((numberItem) => {
+      //     const index = item.number.indexOf(numberItem);
+
+      //     if (
+      //       item.number[index + 4] !== item.number[index] &&
+      //       item.number[index - 1] !== item.number[index]
+      //     ) {
+      //       return item.number;
+      //     }
+      //   });
+      //   console.log(test);
+      // });
     }
 
     return sim.data;
