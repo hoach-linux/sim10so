@@ -3,9 +3,9 @@ import {
   Button,
   Grid,
   Loading,
-  Popover,
   Spacer,
   Text,
+  Tooltip,
 } from "@nextui-org/react";
 import { Card1 } from "./Card1";
 import { Card2 } from "./Card2";
@@ -39,16 +39,44 @@ const Header = () => {
   return (
     <div>
       <div style={{ minWidth: "100%" }}>
-        <Input
-          placeholder="Tìm sim trên simdep10so"
-          size="xl"
-          onChange={(e: any) => setSearchInput(e.target.value)}
-          color="primary"
-          aria-label="input"
-          bordered
-          clearable
-          css={{ minWidth: "100%", padding: "0 5px 5px 5px" }}
-        />
+        <Grid.Container gap={2} alignItems="center" css={{ minWidth: "100%" }}>
+          <Grid md={10} xs={8}>
+            <Input
+              placeholder="Tìm sim trên simdep10so"
+              size="xl"
+              onChange={(e: any) => setSearchInput(e.target.value)}
+              color="primary"
+              aria-label="input"
+              bordered
+              clearable
+              css={{ minWidth: "100%" }}
+            />
+          </Grid>
+          <Grid md={2} xs={4}>
+            <Tooltip
+              placement="bottom"
+              content={
+                <div>
+                  <Text>• Tìm sim có số đuôi 6789 hãy gõ *6789</Text>
+                  <Text>• Tìm sim có đầu 090 đuôi 8888 hãy gõ 090*8888</Text>
+                  <Text>• Tìm sim đầu số 0914 đuôi bất kỳ, hãy gõ 0914*</Text>
+                </div>
+              }
+              contentColor="primary"
+            >
+              <Button
+                flat
+                shadow
+                size="lg"
+                color="gradient"
+                css={{ minWidth: "100%" }}
+              >
+                Cách tìm
+              </Button>
+            </Tooltip>
+          </Grid>
+        </Grid.Container>
+
         {searchSim.length >= 1 ? (
           <SimList sims={searchSim} title={searchTitle} />
         ) : searchSim.length < 1 &&
