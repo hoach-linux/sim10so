@@ -54,7 +54,8 @@ const Header = () => {
           </Grid>
           <Grid md={2} xs={4}>
             <Tooltip
-              placement="bottom"
+              css={{ minWidth: "50%" }}
+              placement="bottomEnd"
               content={
                 <div>
                   <Text>• Tìm sim có số đuôi 6789 hãy gõ *6789</Text>
@@ -69,7 +70,7 @@ const Header = () => {
                 shadow
                 size="lg"
                 color="gradient"
-                css={{ minWidth: "100%" }}
+                css={{ minWidth: "100%", zIndex: 1 }}
               >
                 Cách tìm
               </Button>
