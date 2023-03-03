@@ -55,9 +55,7 @@ export default function Order({ order }: { order: any }) {
           </div>
           <div style={{ display: "flex", justifyContent: "space-between" }}>
             <Text>Giá bán</Text>
-            <Text>
-              {Number(sim.price.split(",").join("")).toLocaleString("vn")}₫
-            </Text>
+            <Text>{sim.price.toLocaleString("vn")}₫</Text>
           </div>
           <div style={{ display: "flex", justifyContent: "space-between" }}>
             <Text>Nhà mạng</Text>
