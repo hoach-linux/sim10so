@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Grid } from "@nextui-org/react";
+import { Grid, Loading, Spacer, Text } from "@nextui-org/react";
 import { Card1 } from "./Card1";
 import { Card2 } from "./Card2";
 import { Card3 } from "./Card3";
@@ -42,8 +42,21 @@ const Header = () => {
           clearable
           css={{ minWidth: "100%", padding: "0 5px 5px 5px" }}
         />
-        {searchSim.length >= 1 && (
+        {searchSim.length >= 1 ? (
           <SimList sims={searchSim} title={searchTitle} />
+        ) : searchSim.length < 1 &&
+          searchInput.length !== 0 &&
+          !searchLoading ? (
+          <Text h2 css={{ textAlign: "center" }}>
+            Không tìm thấy sim
+          </Text>
+        ) : (
+          searchLoading && (
+            <div style={{ display: "flex", justifyContent: "center" }}>
+              <Spacer y={3} />
+              <Loading size="lg" />
+            </div>
+          )
         )}
       </div>
       <Grid.Container gap={1} justify="center" css={{ marginBottom: "62px" }}>

@@ -62,6 +62,8 @@ const Home = () => {
                   onChange={(e) => setPage(e)}
                   total={totalPage}
                   shadow
+                  rounded
+                  noMargin
                   controls={false}
                   size="lg"
                   initialPage={page}

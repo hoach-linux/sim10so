@@ -42,7 +42,12 @@ export const Card4 = () => (
               css={{ color: "#94f9f0", bg: "#94f9f026" }}
             >
               <Link to="/thuesimvip">
-                <Text css={{ color: "white" }} size={14} weight="bold">
+                <Text
+                  css={{ color: "inherit" }}
+                  size={12}
+                  weight="bold"
+                  transform="uppercase"
+                >
                   Xem Ngay
                 </Text>
               </Link>

@@ -32,20 +32,64 @@ export default class SimService {
   }
   static async getSimBySearch(parameters: ISearch) {
     let sim: any;
+    const lastElement = parameters.keyword.length - 1;
 
-    if (parameters.limit && parameters.page && parameters.keyword) {
+    if (parameters.keyword[0] === "*") {
       sim = await axios.get(
-        `https://directus.hoach.skryonline.com/items/sim_list?filter={"number":{"_contains":"${parameters.keyword}"}}`,
+        `https://directus.hoach.skryonline.com/items/sim_list?filter={"number":{"_ends_with":"${parameters.keyword.slice(
+          1
+        )}"}}`
+      );
+    } else if (parameters.keyword[parameters.keyword.length - 1] === "*") {
+      sim = await axios.get(
+        `https://directus.hoach.skryonline.com/items/sim_list?filter={"number":{"_starts_with":"${parameters.keyword.slice(
+          0,
+          parameters.keyword.length - 1
+        )}"}}`
+      );
+    } else if (
+      parameters.keyword[0] !== "*" &&
+      parameters.keyword[parameters.keyword.length - 1] !== "*" &&
+      parameters.keyword.includes("*")
+    ) {
+      const parametersIndex = parameters.keyword.indexOf("*");
+
+      sim = await axios.get(
+        `https://directus.hoach.skryonline.com/items/sim_list`,
         {
           params: {
-            limit: parameters.limit,
-            page: parameters.page,
+            filter: {
+              _and: [
+                {
+                  number: {
+                    _starts_with: parameters.keyword.slice(0, parametersIndex),
+                  },
+                },
+                {
+                  number: {
+                    _ends_with: parameters.keyword.slice(
+                      parametersIndex + 1,
+                      lastElement + 1
+                    ),
+                  },
+                },
+              ],
+            },
           },
         }
       );
     } else {
       sim = await axios.get(
-        `https://directus.hoach.skryonline.com/items/sim_list?filter={"number":{"_contains":"${parameters.keyword}"}}`
+        `https://directus.hoach.skryonline.com/items/sim_list`,
+        {
+          params: {
+            filter: {
+              number: {
+                _contains: parameters.keyword,
+              },
+            },
+          },
+        }
       );
     }
     return sim.data;
