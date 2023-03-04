@@ -201,19 +201,18 @@ const NavbarComponent = () => {
             </Collapse>
             <Collapse title="Sim theo mạng">
               {simProvider.map((item, index) => (
-                <Link to={item} key={item}>
-                  <NextLink
-                    block
-                    onClick={() => {
-                      resetPage();
-                      setSearchParams({ query: item });
-                    }}
-                    color="default"
-                    css={{ minWidth: "100%" }}
-                  >
-                    {item}
-                  </NextLink>
-                </Link>
+                <NextLink
+                  block
+                  key={item}
+                  onClick={() => {
+                    resetPage();
+                    setSearchParams({ query: item });
+                  }}
+                  color="default"
+                  css={{ minWidth: "100%" }}
+                >
+                  {item}
+                </NextLink>
               ))}
             </Collapse>
           </Collapse.Group>
