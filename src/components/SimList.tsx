@@ -26,7 +26,7 @@ const SimList = ({ sims, title }: { sims: any; title: any }) => {
     <div>
       {sims.length > 0 && (
         <div>
-          <Text h2 css={{ textAlign: "center" }}>
+          <Text h2 css={{ textAlign: "center" }} transform="capitalize" weight="normal">
             {title}
           </Text>
           <Grid.Container

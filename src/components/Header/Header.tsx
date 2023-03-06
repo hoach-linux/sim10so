@@ -66,10 +66,7 @@ const Header = () => {
               contentColor="primary"
             >
               <Button
-                flat
-                shadow
                 size="lg"
-                color="gradient"
                 css={{ minWidth: "100%", zIndex: 1 }}
               >
                 Cách tìm

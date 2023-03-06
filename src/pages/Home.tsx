@@ -1,7 +1,7 @@
 import * as React from "react";
 import { motion } from "framer-motion";
 import HomeMainContent from "../components/HomeMainContent";
-import { Grid, Loading, Spacer } from "@nextui-org/react";
+import { Grid, Loading } from "@nextui-org/react";
 import Sidebar from "../components/Sidebar";
 import { useSearchParams } from "react-router-dom";
 import { useState, useEffect } from "react";

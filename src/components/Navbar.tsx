@@ -22,9 +22,9 @@ import useStore from "../store/useStore";
 const NavbarComponent = () => {
   const [searchParams, setSearchParams] = useSearchParams({});
   const collapseItems = [
-    { name: "Trang chủ", link: "/" },
+    { name: "Trang Chủ", link: "/" },
     { name: "Thuê Sim VIP", link: "/thuesimvip" },
-    { name: "Định giá sim 4.0", link: "https://dinhgiasim.com.vn/" },
+    { name: "Định Giá Sim 4.0", link: "https://dinhgiasim.com.vn/" },
     {
       name: "Phong Thủy",
       link: "https://xemvanmenh.net/xem-boi-so-dien-thoai.html",
@@ -154,20 +154,20 @@ const NavbarComponent = () => {
       </Navbar.Content>
       <Navbar.Collapse css={{ zIndex: "100" }}>
         {collapseItems.map((item, index) => (
-          <Navbar.CollapseItem key={item.link} css={{ padding: "0" }}>
+          <Navbar.CollapseItem key={item.link}>
             <Link
               to={item.link}
               style={{
                 minWidth: "100%",
               }}
             >
-              <Text h3>{item.name}</Text>
+              {item.name}
             </Link>
           </Navbar.CollapseItem>
         ))}
         <Navbar.CollapseItem css={{ padding: "0" }}>
           <Collapse.Group>
-            <Collapse title="Sim theo giá">
+            <Collapse title="Sim Theo Giá">
               {simPrice.map((item, index) => (
                 <NextLink
                   block
@@ -183,7 +183,7 @@ const NavbarComponent = () => {
                 </NextLink>
               ))}
             </Collapse>
-            <Collapse title="Sim đẳng cấp">
+            <Collapse title="Sim Đẳng Cấp">
               {simDangCap.map((item, index) => (
                 <NextLink
                   block
@@ -199,7 +199,7 @@ const NavbarComponent = () => {
                 </NextLink>
               ))}
             </Collapse>
-            <Collapse title="Sim theo mạng">
+            <Collapse title="Sim Theo Mạng">
               {simProvider.map((item, index) => (
                 <NextLink
                   block
