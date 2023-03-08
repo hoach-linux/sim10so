@@ -18,6 +18,7 @@ import { SunIcon } from "./icons/SunIcon";
 import { MoonIcon } from "./icons/MoonIcon";
 import { useState } from "react";
 import useStore from "../store/useStore";
+import { AcmeLogo } from "./icons/AcmeLogo";
 
 const NavbarComponent = () => {
   const [searchParams, setSearchParams] = useSearchParams({});
@@ -84,9 +85,9 @@ const NavbarComponent = () => {
         }}
       />
       <Navbar.Brand>
-        <Link to="/">
-          <Text b color="default">
-            SIM10SO.COM
+        <Link to="/" style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+          <Text b color="inherit">
+            SIMDEP10S0
           </Text>
         </Link>
       </Navbar.Brand>
